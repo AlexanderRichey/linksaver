@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Linkpad | Login{% endblock %}
+
+{% block content %}
+<form action="/sessions" method="POST">
+  <label>
+    <span>Email address</span>
+    <input name="email" type="email">
+    <span>{{ email }}</span>
+  </label>
+  
+  <label>
+    <span>Password</span>
+    <input name="password" type="password">
+    <span>{{ password }}</span>
+  </label>
+
+  <button type="submit">Login</button>
+</form>
+{% endblock %}

@@ -1,0 +1,19 @@
+<header class="flex items-center justify-between">
+  <div>
+    <h1 class="m0 p0">Linkpad</h1>
+  </div>
+  <div>
+    <p class="m0 p0">
+      {% if user.is_authenticated %}
+        <span>{{ user.display_name }} /</span>
+        <a href="/logout">Logout</a>
+      {% else %}
+        <a href="/">Home</a>
+        <span> / </span>
+        <a href="/login">Login</a>
+        <span> / </span>
+        <a href="/signup">Sign up</a>
+      {% endif %}
+    </p>
+  </div>
+</header>

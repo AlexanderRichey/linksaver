@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  mongo:
+    image: "mongo"
+    restart: "always"
+    volumes:
+      - "db-data:/data/db"
+    ports:
+      - "27017"
+
+  starlette:
+    build: .
+    command: "uvicorn linksaver:app --host 0.0.0.0 --port 8000 --reload"
+    restart: "always"
+    volumes:
+      - ".:/var/www"
+    ports:
+      - "8000:8000"
+    links:
+      - "mongo"
+
+volumes:
+  db-data:
