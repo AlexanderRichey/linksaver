@@ -8,4 +8,11 @@
     <li>Take notes</li>
     <li>Order items by date</li>
   </ul>
+  {% if user.is_authenticated %}
+    <ul>
+      {% for item in items %}
+        <li data-key="{{ item.id }}">{{ item.title }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
 {% endblock %}

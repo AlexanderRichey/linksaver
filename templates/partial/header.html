@@ -5,14 +5,17 @@
   <div>
     <p class="m0 p0">
       {% if user.is_authenticated %}
-        <span>{{ user.display_name }} /</span>
+        <span>{{ user.display_name }}</span>
+        <span> / </span>
+        <a href="/notes">New note</a>
+        <span> / </span>
         <a href="/logout">Logout</a>
       {% else %}
         <a href="/">Home</a>
         <span> / </span>
-        <a href="/login">Login</a>
+        <a href="/sessions">Login</a>
         <span> / </span>
-        <a href="/signup">Sign up</a>
+        <a href="/users">Sign up</a>
       {% endif %}
     </p>
   </div>

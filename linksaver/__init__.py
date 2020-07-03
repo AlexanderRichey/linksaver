@@ -2,18 +2,17 @@ from starlette.applications import Starlette
 from starlette.responses import JSONResponse
 from starlette.routing import Route
 from starlette.middleware import Middleware
-from starlette.middleware.sessions import SessionMiddleware
 from starlette.middleware.authentication import AuthenticationMiddleware
 
 from .handlers import (
     home,
-    signup,
+    user_form,
     create_user,
-    login,
+    session_form,
     create_session,
-    logout,
-    Items,
-    ItemDetail,
+    delete_session,
+    note_form,
+    create_note,
 )
 from .auth import CookieAuthBackend
 from .db import client
@@ -22,20 +21,15 @@ from .db import client
 app = Starlette(
     debug=True,
     on_shutdown=[client.close],
-    middleware=[
-        Middleware(
-            SessionMiddleware, secret_key="mysecret", session_cookie="session_id"
-        ),
-        Middleware(AuthenticationMiddleware, backend=CookieAuthBackend()),
-    ],
+    middleware=[Middleware(AuthenticationMiddleware, backend=CookieAuthBackend())],
     routes=[
         Route("/", home, methods=["GET", "POST"]),
-        Route("/signup", signup, methods=["GET"]),
-        Route("/register", create_user, methods=["POST"]),
-        Route("/login", login, methods=["GET"]),
+        Route("/users", user_form, methods=["GET"]),
+        Route("/users", create_user, methods=["POST"]),
+        Route("/sessions", session_form, methods=["GET"]),
         Route("/sessions", create_session, methods=["POST"]),
-        Route("/logout", logout, methods=["GET"]),
-        Route("/items", Items),
-        Route("/items/{item_id}", ItemDetail),
+        Route("/logout", delete_session, methods=["GET"]),
+        Route("/notes", note_form, methods=["GET"]),
+        Route("/notes", create_note, methods=["POST"]),
     ],
 )

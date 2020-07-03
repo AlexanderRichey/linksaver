@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Linkpad | Create Note{% endblock %}
+
+{% block content %}
+<form action="/notes" method="POST">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+
+  <label>
+    <span>Title</span>
+    <input name="title" type="text">
+    <span>{{ title }}</span>
+  </label>
+  
+  <label>
+    <span>Body</span>
+    <textarea name="body"></textarea>
+    <span>{{ body }}</span>
+  </label>
+
+  <button type="submit">Save</button>
+</form>
+{% endblock %}

@@ -68,6 +68,9 @@ class User(BaseModel, BaseUser):
         db.users.delete_one({"email": self.email})
         return self
 
+    def roll_session(self):
+        self.session_id = token_urlsafe(16)
+
 
 class Item(BaseModel):
     id: Optional[str]
@@ -75,7 +78,7 @@ class Item(BaseModel):
     type: Literal[TYPE_LINK, TYPE_NOTE]
     url: Optional[HttpUrl]
     favicon: Optional[HttpUrl]
-    name: Optional[str]
+    title: Optional[str]
     body: Optional[str]
     created_at: datetime = datetime.now()
     updated_at: datetime = datetime.now()
@@ -88,15 +91,25 @@ class Item(BaseModel):
         return cls(**{k.replace("_", ""): v for k, v in item.items()})
 
     @staticmethod
-    def get_by_email(cls, user: User):
-        items = db.items.find({"email": user.email})
-        return [
-            cls(**{k.replace("_", ""): v for k, v in item.items()}) for item in items
-        ]
+    def get_by_user(user: User):
+        items = []
+        for item in db.items.find({"email": user.email}):
+            cleaned = {}
+            for k, v in item.items():
+                if k == "_id":
+                    cleaned["id"] = str(v)
+                else:
+                    cleaned[k] = v
+            items.append(Item(**cleaned))
+        return items
 
     def put(self):
         self.updated_at = datetime.now()
-        resp = db.items.replace_one({"_id": ObjectId(self.id)}, dict(self), True)
+        resp = db.items.replace_one(
+            {"_id": ObjectId(self.id)},
+            {k: v for k, v in dict(self).items() if k != "id"},
+            True,
+        )
         self.id = resp.upserted_id or self.id
         return self
 

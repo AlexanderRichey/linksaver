@@ -9,7 +9,7 @@ from .models import User
 
 class CookieAuthBackend(AuthenticationBackend):
     async def authenticate(self, request):
-        session_id = request.session.get("id")
+        session_id = request.cookies.get("session_id")
         if not session_id:
             return AuthCredentials(["unauthenticated"]), UnauthenticatedUser()
 
