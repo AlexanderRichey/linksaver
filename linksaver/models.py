@@ -1,7 +1,7 @@
 from secrets import token_urlsafe
 from typing import Optional, Literal
 from datetime import datetime
-from pydantic import BaseModel, EmailStr, HttpUrl
+from pydantic import BaseModel, EmailStr, HttpUrl, validator
 from starlette.authentication import BaseUser
 from bson.objectid import ObjectId
 
@@ -38,14 +38,14 @@ class User(BaseModel, BaseUser):
         user = db.users.find_one({"session_id": session_id})
         if not user:
             return None
-        return cls(**user)
+        return cls.construct(**user)
 
     @classmethod
     def get_by_email(cls, email):
         user = db.users.find_one({"email": email})
         if not user:
             return None
-        return cls(**user)
+        return cls.construct(**user)
 
     @property
     def is_authenticated(self) -> bool:
@@ -76,31 +76,47 @@ class Item(BaseModel):
     id: Optional[str]
     email: EmailStr
     type: Literal[TYPE_LINK, TYPE_NOTE]
-    url: Optional[HttpUrl]
-    favicon: Optional[HttpUrl]
-    title: Optional[str]
-    body: Optional[str]
+    url: Optional[HttpUrl] = None
+    favicon: Optional[HttpUrl] = None
+    title: Optional[str] = None
+    body: Optional[str] = None
     created_at: datetime = datetime.now()
     updated_at: datetime = datetime.now()
+
+    @validator("url")
+    def url_not_none_for_links(cls, v, values):
+        if values["type"] == TYPE_LINK and not v:
+            raise ValueError("url required for links")
+        return v
+
+    @validator("body")
+    def body_not_empty_for_notes(cls, v, values):
+        if values["type"] == TYPE_NOTE and (not v or len(v) == 0):
+            raise ValueError("body cannot be empty")
+        return v
+
+    @staticmethod
+    def clean_item(item) -> dict:
+        cleaned = {}
+        for k, v in item.items():
+            if k == "_id":
+                cleaned["id"] = str(v)
+            else:
+                cleaned[k] = v
+        return cleaned
 
     @classmethod
     def get_by_id(cls, id: str):
         item = db.items.find_one({"_id": ObjectId(id)})
         if not item:
             return None
-        return cls(**{k.replace("_", ""): v for k, v in item.items()})
+        return cls.construct(**Item.clean_item(item))
 
     @staticmethod
     def get_by_user(user: User):
         items = []
         for item in db.items.find({"email": user.email}):
-            cleaned = {}
-            for k, v in item.items():
-                if k == "_id":
-                    cleaned["id"] = str(v)
-                else:
-                    cleaned[k] = v
-            items.append(Item(**cleaned))
+            items.append(Item.construct(**Item.clean_item(item)))
         return items
 
     def put(self):

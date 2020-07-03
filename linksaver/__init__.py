@@ -11,6 +11,8 @@ from .handlers import (
     session_form,
     create_session,
     delete_session,
+    link_form,
+    create_link,
     note_form,
     create_note,
 )
@@ -29,6 +31,8 @@ app = Starlette(
         Route("/sessions", session_form, methods=["GET"]),
         Route("/sessions", create_session, methods=["POST"]),
         Route("/logout", delete_session, methods=["GET"]),
+        Route("/links", link_form, methods=["GET"]),
+        Route("/links", create_link, methods=["POST"]),
         Route("/notes", note_form, methods=["GET"]),
         Route("/notes", create_note, methods=["POST"]),
     ],

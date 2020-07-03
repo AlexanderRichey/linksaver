@@ -8,7 +8,7 @@ import bcrypt
 
 from .templates import templates
 from .models import User, Item, TYPE_NOTE, TYPE_LINK
-from .forms import UserForm, NoteForm
+from .forms import UserForm, NoteForm, LinkForm
 from .magic import csrf_signer
 
 
@@ -23,9 +23,8 @@ async def home(request):
 async def user_form(request):
     if request.user.is_authenticated:
         return RedirectResponse(url="/")
-    return templates.TemplateResponse(
-        "signup.html", {"request": request, "user": request.user}
-    )
+    context = {"request": request, "user": request.user}
+    return templates.TemplateResponse("signup.html", context)
 
 
 @requires(["unauthenticated"])
@@ -41,12 +40,12 @@ async def create_user(request):
     except ValidationError as e:
         for error in e.errors():
             context[error["loc"][0]] = error["msg"]
-        return templates.TemplateResponse("signup.html", context)
+        return templates.TemplateResponse("signup.html", context, 400)
 
     user = User.get_by_email(user_form.email)
     if user:
         context["email"] = "This email is already registered"
-        return templates.TemplateResponse("signup.html", context)
+        return templates.TemplateResponse("signup.html", context, 400)
 
     password_digest = bcrypt.hashpw(
         bytes(user_form.password, encoding="utf8"), bcrypt.gensalt()
@@ -63,9 +62,8 @@ async def create_user(request):
 async def session_form(request):
     if request.user.is_authenticated:
         return RedirectResponse(url="/")
-    return templates.TemplateResponse(
-        "login.html", {"request": request, "user": request.user}
-    )
+    context = {"request": request, "user": request.user}
+    return templates.TemplateResponse("login.html", context)
 
 
 @requires(["unauthenticated"])
@@ -82,11 +80,11 @@ async def create_session(request):
     except ValidationError as e:
         for error in e.errors():
             context[error["loc"][0]] = error["msg"]
-        return templates.TemplateResponse("login.html", context)
+        return templates.TemplateResponse("login.html", context, 400)
 
     user = User.get_by_email(user_form.email)
     if not user:
-        return templates.TemplateResponse("login.html", context)
+        return templates.TemplateResponse("login.html", context, 400)
 
     if bcrypt.checkpw(
         bytes(user_form.password, encoding="utf8"),
@@ -133,7 +131,7 @@ async def create_note(request):
     except ValidationError as e:
         for error in e.errors():
             context[error["loc"][0]] = error["msg"]
-        return templates.TemplateResponse("note.html", context)
+        return templates.TemplateResponse("note.html", context, 400)
 
     if not csrf_signer.validate(note_form.csrf):
         raise HTTPException(401)
@@ -149,9 +147,44 @@ async def create_note(request):
     return RedirectResponse(url="/")
 
 
+@requires(["authenticated"])
 async def link_form(request):
-    pass
+    return templates.TemplateResponse(
+        "link.html",
+        {
+            "request": request,
+            "user": request.user,
+            "csrf": csrf_signer.sign(request.user.session_id).decode("utf-8"),
+        },
+    )
 
 
+@requires(["authenticated"])
 async def create_link(request):
-    pass
+    context = {
+        "request": request,
+        "user": request.user,
+    }
+
+    try:
+        form_data = await request.form()
+        link_form = LinkForm(**{k: v for k, v in dict(form_data).items() if v != ""})
+    except ValidationError as e:
+        for error in e.errors():
+            context[error["loc"][0]] = error["msg"]
+        return templates.TemplateResponse("link.html", context, 400)
+
+    if not csrf_signer.validate(link_form.csrf):
+        raise HTTPException(401)
+
+    item = Item(
+        email=request.user.email,
+        type=TYPE_LINK,
+        title=link_form.title,
+        body=link_form.body,
+        url=link_form.url,
+        favicon=link_form.favicon,
+    )
+    item.put()
+
+    return RedirectResponse(url="/")
