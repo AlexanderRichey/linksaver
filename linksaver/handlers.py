@@ -231,8 +231,6 @@ async def api_create_link(request):
     )
     item.put()
 
-    print(item)
-
     return JSONResponse(
         item.json(), status_code=201, headers={"access-control-allow-origin": "*",}
     )

@@ -1,5 +1,5 @@
 const main = document.querySelector("main");
-const token = "pnc69Pm-7CEWmdoAwWG9oQ";
+const token = "Rub1rhsH2jaOdP0Q5om_1A";
 
 chrome.tabs.query({ active: true, lastFocusedWindow: true }, tabs => {
   const tab = tabs[0];

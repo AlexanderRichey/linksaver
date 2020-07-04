@@ -1,18 +1,30 @@
 {% extends 'base.html' %}
 
-{% block title %}Linkpad | Home{% endblock %}
+{% block title %}Linksaver | Home{% endblock %}
 
 {% block content %}
-  <ul>
-    <li>Save links</li>
-    <li>Take notes</li>
-    <li>Order items by date</li>
-  </ul>
   {% if user.is_authenticated %}
+  <div class="col col-10">
+    {% if items|length == 0 %}
+      <p>You haven't added anything yet</p>
+    {% else %}
+      <p>Items</p>
+      <ul>
+        {% for item in items %}
+          <li data-key="{{ item.id }}">{{ item.title }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    </div>
+    <div class="col col-2">
+      <p>Search</p>
+      <p>Tags</p>
+    </div>
+  {% else %}
     <ul>
-      {% for item in items %}
-        <li data-key="{{ item.id }}">{{ item.title }}</li>
-      {% endfor %}
+      <li>Save links</li>
+      <li>Take notes</li>
+      <li>Order items by date</li>
     </ul>
   {% endif %}
 {% endblock %}

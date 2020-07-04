@@ -2,17 +2,53 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>{% block title %}Linkpad{% endblock %}</title>
+    <title>{% block title %}Linksaver{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css"> -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css">
-    <link href="https://unpkg.com/basscss@8.0.2/css/basscss.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css">
+    <link rel="stylesheet" href="https://unpkg.com/basscss@8.0.2/css/basscss.min.css">
+    <style>
+      html {
+        font-family: "Inter", sans-serif;
+        font-size: 16px;
+      }
+
+      :root {
+        --black: #333;
+        --white: #fff;
+        --gray: #eee;
+        --lightgray: #fafafa;
+      }
+
+      body {
+        padding: 3rem;
+        font-size: 1rem;
+        margin: auto;
+        max-width: 100rem;
+        color: var(--black);
+        background-color: var(--white);
+      }
+
+      input {
+        width: 100%;
+        padding: 0.5rem;
+        border: 0.1rem solid var(--gray);
+      }
+
+      textarea {
+        width: 100%;
+        padding: 0.5rem;
+        border: 0.1rem solid var(--gray);
+        font-family: monospace;
+        background-color: var(--lightgray);
+      }
+    </style>
   </head>
   <body>
-    <main>
-      {% include "partial/header.html" %}
+    {% include "partial/header.html" %}
+    <main class="clearfix">
       {% block content %}
       {% endblock %}
     </main>
+    {% include "partial/footer.html" %}
   </body>
 </html>

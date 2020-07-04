@@ -1,13 +1,13 @@
-<header class="flex items-center justify-between">
+<header class="flex items-center justify-between pb4 pt1">
   <div>
-    <h1 class="m0 p0">Linkpad</h1>
+    <h1 class="m0 p0 h3 regular">Linksaver</h1>
   </div>
   <div>
     <p class="m0 p0">
       {% if user.is_authenticated %}
-        <span>{{ user.display_name }}</span>
+        <span><code>{{ user.display_name }}</code></span>
         <span> / </span>
-        <span>{{ user.token }}</span>
+        <span><code>{{ user.token }}</code></span>
         <span> / </span>
         <a href="/notes">New note</a>
         <span> / </span>

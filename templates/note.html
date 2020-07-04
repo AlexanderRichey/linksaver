@@ -1,23 +1,47 @@
 {% extends 'base.html' %}
 
-{% block title %}Linkpad | Create Note{% endblock %}
+{% block title %}Linksaver | Create Note{% endblock %}
 
 {% block content %}
-<form action="/notes" method="POST">
-  <input type="hidden" name="csrf" value="{{ csrf }}">
+<div class="max-width-2 mx-auto">
+  <form action="/notes" method="POST">
+    <input type="hidden" name="csrf" value="{{ csrf }}">
 
-  <label>
-    <span>Title</span>
-    <input name="title" type="text">
-    <span>{{ title }}</span>
-  </label>
-  
-  <label>
-    <span>Body</span>
-    <textarea name="body"></textarea>
-    <span>{{ body }}</span>
-  </label>
+    <div>
+      <div class="pb1">
+        <label for="title">
+          <small>Title</small>
+        </label>
+      </div>
+      <div>
+        <input id="title" name="title" type="text" autofocus>
+      </div>
+      <div>
+        <p>
+          <span>{{ title }}</span>
+        </p>
+      </div>
+    </div>
+    
+    <div>
+      <div class="pb1">
+        <label for="body">
+          <small>Body</small>
+        </label>
+      </div>
+      <div>
+        <textarea id="body" name="body"></textarea>
+      </div>
+      <div>
+        <p>
+          <span>{{ body }}</span>
+        </p>
+      </div>
+    </div>
 
-  <button type="submit">Save</button>
-</form>
+    <div>
+      <button type="submit">Save</button>
+    </div>
+  </form>
+</div>
 {% endblock %}
