@@ -15,6 +15,7 @@ from .handlers import (
     create_link,
     note_form,
     create_note,
+    api_create_link,
 )
 from .auth import CookieAuthBackend
 from .db import client
@@ -35,5 +36,6 @@ app = Starlette(
         Route("/links", create_link, methods=["POST"]),
         Route("/notes", note_form, methods=["GET"]),
         Route("/notes", create_note, methods=["POST"]),
+        Route("/api/links", api_create_link, methods=["POST", "OPTIONS"]),
     ],
 )

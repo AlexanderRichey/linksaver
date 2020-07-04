@@ -7,6 +7,8 @@
       {% if user.is_authenticated %}
         <span>{{ user.display_name }}</span>
         <span> / </span>
+        <span>{{ user.token }}</span>
+        <span> / </span>
         <a href="/notes">New note</a>
         <span> / </span>
         <a href="/logout">Logout</a>

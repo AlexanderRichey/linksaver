@@ -25,3 +25,9 @@ class LinkForm(BaseModel):
     url: HttpUrl
     favicon: Optional[HttpUrl] = None
     csrf: str
+
+
+class ApiLinkForm(BaseModel):
+    title: Optional[str] = None
+    url: HttpUrl
+    favicon: Optional[HttpUrl] = None

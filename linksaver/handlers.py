@@ -1,6 +1,6 @@
 from starlette.endpoints import HTTPEndpoint
 from starlette.authentication import requires
-from starlette.responses import RedirectResponse
+from starlette.responses import RedirectResponse, JSONResponse, PlainTextResponse
 from starlette.exceptions import HTTPException
 from pydantic import BaseModel, EmailStr, ValidationError, Field
 from typing import Pattern
@@ -8,7 +8,7 @@ import bcrypt
 
 from .templates import templates
 from .models import User, Item, TYPE_NOTE, TYPE_LINK
-from .forms import UserForm, NoteForm, LinkForm
+from .forms import UserForm, NoteForm, LinkForm, ApiLinkForm
 from .magic import csrf_signer
 
 
@@ -188,3 +188,51 @@ async def create_link(request):
     item.put()
 
     return RedirectResponse(url="/")
+
+
+async def api_create_link(request):
+    if request.method == "OPTIONS":
+        return PlainTextResponse(
+            headers={
+                "access-control-allow-headers": "Authorization,Content-Type",
+                "access-control-allow-origin": "*",
+            },
+        )
+
+    auth = request.headers["authorization"]
+    try:
+        scheme, token = auth.split()
+        if scheme.lower() != "bearer":
+            return JSONResponse({"message": "unauthorized"}, status_code=401)
+    except ValueError:
+        return JSONResponse({"message": "unauthorized"}, status_code=401)
+
+    user = User.get_by_token(token)
+    if not user:
+        return JSONResponse({"message": "unauthorized"}, status_code=401)
+
+    try:
+        json_body = await request.json()
+        link_form = ApiLinkForm(**{k: v for k, v in dict(json_body).items() if v != ""})
+    except ValidationError as e:
+        errors = {}
+        for error in e.errors():
+            errors[error["loc"][0]] = error["msg"]
+        return JSONResponse(
+            errors, status_code=400, headers={"access-control-allow-origin": "*",}
+        )
+
+    item = Item(
+        email=user.email,
+        type=TYPE_LINK,
+        title=link_form.title,
+        url=link_form.url,
+        favicon=link_form.favicon,
+    )
+    item.put()
+
+    print(item)
+
+    return JSONResponse(
+        item.json(), status_code=201, headers={"access-control-allow-origin": "*",}
+    )

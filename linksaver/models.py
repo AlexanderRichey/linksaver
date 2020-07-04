@@ -30,12 +30,20 @@ class User(BaseModel, BaseUser):
     email: EmailStr
     password_digest: str
     session_id: str = token_urlsafe(16)
+    token: str = token_urlsafe(16)
     created_at: datetime = datetime.now()
     updated_at: datetime = datetime.now()
 
     @classmethod
     def get_by_session_id(cls, session_id):
         user = db.users.find_one({"session_id": session_id})
+        if not user:
+            return None
+        return cls.construct(**user)
+
+    @classmethod
+    def get_by_token(cls, token):
+        user = db.users.find_one({"token": token})
         if not user:
             return None
         return cls.construct(**user)
@@ -126,7 +134,7 @@ class Item(BaseModel):
             {k: v for k, v in dict(self).items() if k != "id"},
             True,
         )
-        self.id = resp.upserted_id or self.id
+        self.id = str(resp.upserted_id) if resp.upserted_id else self.id
         return self
 
     def delete(self):
