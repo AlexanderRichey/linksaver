@@ -1,46 +1,19 @@
 {% extends 'base.html' %}
+{% import 'partial/forms.html' as forms %}
 
 {% block title %}Linksaver | Create Note{% endblock %}
 
 {% block content %}
-<div class="max-width-2 mx-auto">
+<div class="max-width-3 mx-auto">
   <form action="/notes" method="POST">
     <input type="hidden" name="csrf" value="{{ csrf }}">
 
-    <div>
-      <div class="pb1">
-        <label for="title">
-          <small>Title</small>
-        </label>
-      </div>
-      <div>
-        <input id="title" name="title" type="text" autofocus>
-      </div>
-      <div>
-        <p>
-          <span>{{ title }}</span>
-        </p>
-      </div>
-    </div>
-    
-    <div>
-      <div class="pb1">
-        <label for="body">
-          <small>Body</small>
-        </label>
-      </div>
-      <div>
-        <textarea id="body" name="body"></textarea>
-      </div>
-      <div>
-        <p>
-          <span>{{ body }}</span>
-        </p>
-      </div>
-    </div>
+    {{ forms.input('title', type='text', autofocus='true', error=title) }}
 
+    {{ forms.textarea('body', error=body) }}
+  
     <div>
-      <button type="submit">Save</button>
+      <button class="right mt1 btn-large" type="submit">Save</button>
     </div>
   </form>
 </div>

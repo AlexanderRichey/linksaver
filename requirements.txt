@@ -9,6 +9,7 @@ httptools==0.1.1
 idna==2.10
 itsdangerous==1.1.0
 Jinja2==2.11.2
+Markdown==3.2.2
 MarkupSafe==1.1.1
 pycparser==2.20
 pydantic==1.5.1

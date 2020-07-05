@@ -17,6 +17,13 @@
         --white: #fff;
         --gray: #eee;
         --lightgray: #fafafa;
+        --red: #ff4136;
+
+        --monospace: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+      }
+
+      .red {
+        color: var(--red);
       }
 
       body {
@@ -26,22 +33,125 @@
         max-width: 100rem;
         color: var(--black);
         background-color: var(--white);
+        line-height: 1rem;
+      }
+
+      main {
+        min-height: calc(100vh - 18rem);
+      }
+
+      code {
+        font-family: var(--monospace);
+      }
+
+      p {
+        margin: 0;
+      }
+
+      .underline {
+        border-bottom: 0.05rem solid currentColor;
+      }
+
+      .fs-16 {
+        font-size: 1.6rem;
+      }
+
+      .fs-12 {
+        font-size: 1.2rem;
+      }
+
+      .w-100 {
+        width: 100%;
       }
 
       input {
-        width: 100%;
+        width: calc(100% - 1rem);
         padding: 0.5rem;
         border: 0.1rem solid var(--gray);
+        font-size: 1rem;
       }
 
       textarea {
-        width: 100%;
+        width: calc(100% - 1rem);
         padding: 0.5rem;
         border: 0.1rem solid var(--gray);
-        font-family: monospace;
+        font-family: var(--monospace);
         background-color: var(--lightgray);
+        font-size: 1rem;
+        resize: none;
+        overflow: hidden;
+        min-height: 8rem;
+      }
+
+      button {
+        cursor: pointer;
+        color: var(--black);
+      }
+
+      .btn-large {
+        background-color: var(--black);
+        color: var(--white);
+        padding: 1rem 2rem;
+        border: none;
+        font-size: 1rem;
+      }
+
+      .btn-unstyled {
+        border: none;
+        margin: 0;
+        padding: 0;
+        background-color: unset;
+      }
+
+      .bullet {
+        height: 2rem;
+        width: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .bullet-margin {
+        margin-left: 2rem;
+      }
+
+      .markdown p {
+        margin-bottom: 1rem;
+        line-height: 1.3rem;
       }
     </style>
+
+    <script src="https://unpkg.com/stimulus/dist/stimulus.umd.js"></script>
+    <script>
+      (() => {
+        const application = Stimulus.Application.start()
+
+        application.register("note", class extends Stimulus.Controller {
+          static get targets() {
+            return [ "content", "chrome" ]
+          }
+
+          toggle() {
+            this.contentTarget.classList.toggle("display-none")
+            this.chromeTarget.classList.toggle("display-none")
+          }
+
+        })
+
+        application.register("textarea", class extends Stimulus.Controller {
+          static get targets() {
+            return [ "editor" ]
+          }
+
+          adjustHeight() {
+            this.editorTarget.style.height = "5px"
+            this.editorTarget.style.height = (this.editorTarget.scrollHeight) + "px"
+          }
+
+        })
+
+      })()
+    </script>
   </head>
   <body>
     {% include "partial/header.html" %}

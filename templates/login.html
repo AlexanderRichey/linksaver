@@ -1,21 +1,16 @@
 {% extends 'base.html' %}
+{% import 'partial/forms.html' as forms %}
 
 {% block title %}Linksaver | Login{% endblock %}
 
 {% block content %}
-<form action="/sessions" method="POST">
-  <label>
-    <span>Email address</span>
-    <input name="email" type="email">
-    <span>{{ email }}</span>
-  </label>
-  
-  <label>
-    <span>Password</span>
-    <input name="password" type="password">
-    <span>{{ password }}</span>
-  </label>
+<div class="max-width-2 mx-auto">
+  <form action="/sessions" method="POST">
+    {{ forms.input('email', error=email) }}
+   
+    {{ forms.input('password', type='password', error=password) }}
 
-  <button type="submit">Login</button>
-</form>
+    <button class="right mt1" type="submit">Login</button>
+  </form>
+</div>
 {% endblock %}

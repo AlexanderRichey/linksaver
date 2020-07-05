@@ -1,0 +1,46 @@
+{% macro input(name, value='', type='text', error='', autofocus='false') -%}
+<div class="pb2">
+  <div class="pb1">
+    <label for="{{ name|lower }}">
+      <small>{{ name|title }}</small>
+    </label>
+  </div>
+  <div>
+    <input
+      id="{{ name|lower }}"
+      name="{{ name|lower }}"
+      type="{{ type }}"
+      {% if autofocus == 'true' %}
+      autofocus
+      {% endif %}
+    />
+  </div>
+  <div>
+    <p class="red">
+      <span>{{ error }}</span>
+    </p>
+  </div>
+</div>
+{%- endmacro %}
+
+{%- macro textarea(name, value='', rows=10, cols=40, error='') -%}
+<div data-controller="textarea">
+  <div class="pb1">
+    <label for="{{ name|lower }}">
+      <small>{{ name|title }}</small>
+    </label>
+  </div>
+  <div class="mb1">
+    <textarea
+      data-action="input->textarea#adjustHeight"
+      data-target="textarea.editor"
+      id="{{ name|lower }}"
+      name="{{ name|lower }}"></textarea>
+  </div>
+  <div>
+    <p class="red">
+      <span>{{ error }}</span>
+    </p>
+  </div>
+</div>
+{%- endmacro %}

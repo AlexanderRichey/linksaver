@@ -1,0 +1,18 @@
+{% import 'partial/item_types.html' as itemtypes %}
+
+<div class="max-width-3">
+  {% for day, items in days.items() %}
+  <section>
+    <h3>{{ day }}</h3>
+    <ul class="list-reset">
+      {% for item in items %}
+        {% if item.type == 'note' %}
+          {{ itemtypes.note(item) }}
+        {% else %}
+          {{ itemtypes.link(item) }}
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </section>
+  {% endfor %}
+</div>

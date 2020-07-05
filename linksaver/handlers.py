@@ -4,6 +4,7 @@ from starlette.responses import RedirectResponse, JSONResponse, PlainTextRespons
 from starlette.exceptions import HTTPException
 from pydantic import BaseModel, EmailStr, ValidationError, Field
 from typing import Pattern
+import collections
 import bcrypt
 
 from .templates import templates
@@ -16,7 +17,10 @@ async def home(request):
     context = {"request": request, "user": request.user}
     if request.user.is_authenticated:
         items = Item.get_by_user(request.user)
-        context["items"] = items
+        days = collections.defaultdict(list)
+        for item in items:
+            days[item.created_at.strftime("%A %-d %B")].append(item)
+        context["days"] = days
     return templates.TemplateResponse("index.html", context)
 
 

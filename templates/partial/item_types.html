@@ -1,0 +1,38 @@
+{% macro note(item) -%}
+<li data-itemid="{{ item.id }}" data-controller="note">
+  <div class="flex items-center">
+    <div class="bullet">
+      <p>&#x1F4DD</p>
+    </div>
+    <div class="flex justify-between items-center w-100">
+      <button data-action="click->note#toggle" class="btn-unstyled fs-12 flex-auto left-align">
+        {{ item.title }}
+      </button>
+      <div data-target="note.chrome" class="chrome display-none flex">
+        <div>
+          <form action="/notes/{{ item.id }}/delete" method="POST">
+            <button type="submit" class="btn-unstyled">Delete</button>
+          </form>
+        </div>
+        <div>
+          <a class="a-unstyled" href="/notes/{{ item.id }}/edit">Edit</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bullet-margin">
+    <div data-target="note.content" class="markdown display-none my2">
+      {{ item.body|markdown }}
+    </div>
+  </div>
+</li>
+{%- endmacro %}
+
+{% macro link(item) -%}
+<li data-itemid="{{ item.id }}">
+  <div>
+    <p>{{ item.title }}</p>
+  </div>
+</li>
+{%- endmacro %}
