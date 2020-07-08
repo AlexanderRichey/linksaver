@@ -5,12 +5,13 @@
 
 {% block content %}
 <div class="max-width-2 mx-auto">
+  <h2 class="h2 mb3">Login</h2>
   <form action="/sessions" method="POST">
-    {{ forms.input('email', error=email) }}
+    {{ forms.input('email', error=email, autofocus='true') }}
    
     {{ forms.input('password', type='password', error=password) }}
 
-    <button class="right mt1" type="submit">Login</button>
+    <button class="right mt1 btn-large" type="submit">Login</button>
   </form>
 </div>
 {% endblock %}

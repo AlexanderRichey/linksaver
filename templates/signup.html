@@ -1,16 +1,17 @@
 {% extends 'base.html' %}
 {% import 'partial/forms.html' as forms %}
 
-{% block title %}Linksaver | Sign Up{% endblock %}
+{% block title %}Linksaver | Sign up{% endblock %}
 
 {% block content %}
 <div class="max-width-2 mx-auto">
+  <h2 class="h2 mb3">Sign up</h2>
   <form action="/users" method="POST">
-    {{ forms.input('email', error=email) }}
+    {{ forms.input('email', error=email, autofocus='true') }}
    
     {{ forms.input('password', type='password', error=password) }}
 
-    <button class="right mt1" type="submit">Sign up</button>
+    <button class="right mt1 btn-large" type="submit">Sign up</button>
   </form>
 </div>
 {% endblock %}

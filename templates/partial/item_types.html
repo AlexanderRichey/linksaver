@@ -10,12 +10,18 @@
       </button>
       <div data-target="note.chrome" class="chrome display-none flex">
         <div>
-          <form action="/notes/{{ item.id }}/delete" method="POST">
-            <button type="submit" class="btn-unstyled">Delete</button>
+          <form action="/links/{{ item.id }}/delete" method="POST">
+            <button type="submit" class="btn-subtle mr1">
+              <span class="material-icons mr1">delete</span>
+              <span>Delete</span>
+            </button>
           </form>
         </div>
         <div>
-          <a class="a-unstyled" href="/notes/{{ item.id }}/edit">Edit</a>
+          <a class="btn-link-subtle" href="/items/{{ item.id }}/edit">
+            <span class="material-icons mr1">edit</span>
+            <span>Edit</span>
+          </a>
         </div>
       </div>
     </div>
@@ -30,9 +36,40 @@
 {%- endmacro %}
 
 {% macro link(item) -%}
-<li data-itemid="{{ item.id }}">
-  <div>
-    <p>{{ item.title }}</p>
+<li data-itemid="{{ item.id }}" data-controller="note">
+  <div class="flex items-center">
+    <div class="bullet">
+      <p>&#x1F30F</p>
+    </div>
+    <div class="flex justify-between items-center list-width">
+      <button data-action="click->note#toggle" class="btn-unstyled fs-12 flex-auto left-align nowrap truncate overflow-hidden">
+        {{ item.title }}
+      </button>
+      <div data-target="note.chrome" class="chrome display-none flex">
+        <div>
+          <form action="/links/{{ item.id }}/delete" method="POST">
+            <button type="submit" class="btn-subtle mr1">
+              <span class="material-icons mr1">delete</span>
+              <span>Delete</span>
+            </button>
+          </form>
+        </div>
+        <div>
+          <a class="btn-link-subtle" href="/items/{{ item.id }}/edit">
+            <span class="material-icons mr1">edit</span>
+            <span>Edit</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bullet-margin">
+    <div data-target="note.content" class="markdown display-none my2">
+      {% if item.body %}
+        {{ item.body|markdown }}
+      {% endif %}
+    </div>
   </div>
 </li>
 {%- endmacro %}

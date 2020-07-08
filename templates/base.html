@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css">
     <link rel="stylesheet" href="https://unpkg.com/basscss@8.0.2/css/basscss.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <style>
       html {
         font-family: "Inter", sans-serif;
@@ -13,13 +14,17 @@
       }
 
       :root {
+        --trueblack: #000;
         --black: #333;
         --white: #fff;
-        --gray: #eee;
-        --lightgray: #fafafa;
+        --backgroundgray: #fafafa;
+        --lightgray: #eee;
+        --gray: #ccc;
+        --darkgray: #6c6c6c;
         --red: #ff4136;
 
         --monospace: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+        --sans: "Inter", sans-serif
       }
 
       .red {
@@ -27,17 +32,26 @@
       }
 
       body {
-        padding: 3rem;
+        padding: 0 3rem;
         font-size: 1rem;
         margin: auto;
         max-width: 100rem;
         color: var(--black);
         background-color: var(--white);
-        line-height: 1rem;
+        line-height: 1.22;
+        font-family: var(--sans);
+      }
+
+      header {
+        height: 8rem;
+      }
+
+      footer {
+        height: 8rem;
       }
 
       main {
-        min-height: calc(100vh - 18rem);
+        min-height: calc(100vh - 16rem);
       }
 
       code {
@@ -67,25 +81,52 @@
       input {
         width: calc(100% - 1rem);
         padding: 0.5rem;
-        border: 0.1rem solid var(--gray);
-        font-size: 1rem;
+        border: 0.08rem solid var(--gray);
+        font-size: 1.2rem;
+        border-radius: 0.2rem;
+        font-family: "Inter", sans-serif;
+        transition: all 0.2s ease;
+        background-color: var(--backgroundgray);
+      }
+
+      input:hover {
+        border: 0.08rem solid var(--darkgray);
+      }
+
+      input:focus {
+        border: 0.08rem solid var(--trueblack);
       }
 
       textarea {
         width: calc(100% - 1rem);
         padding: 0.5rem;
-        border: 0.1rem solid var(--gray);
+        border: 0.08rem solid var(--gray);
         font-family: var(--monospace);
+        border-radius: 0.2rem;
         background-color: var(--lightgray);
-        font-size: 1rem;
+        font-size: 1.2rem;
         resize: none;
         overflow: hidden;
         min-height: 8rem;
+        background-color: var(--backgroundgray);
+      }
+
+      textarea:hover {
+        border: 0.08rem solid var(--darkgray);
+      }
+
+      textarea:focus {
+        border: 0.08rem solid var(--trueblack);
       }
 
       button {
         cursor: pointer;
         color: var(--black);
+        font-family: var(--sans);
+      }
+
+      button:focus {
+
       }
 
       .btn-large {
@@ -94,6 +135,11 @@
         padding: 1rem 2rem;
         border: none;
         font-size: 1rem;
+        transition: all 0.2s ease;
+      }
+
+      .btn-large:hover {
+        background-color: var(--trueblack);
       }
 
       .btn-unstyled {
@@ -103,21 +149,61 @@
         background-color: unset;
       }
 
+      .btn-link-subtle, .btn-subtle {
+        border: none;
+        margin: 0;
+        background-color: var(--lightgray);
+        border-radius: 0.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        padding: 0.4rem 1rem;
+        color: var(--black);
+        text-decoration: none;
+        transition: all 0.2s ease;
+      }
+
+      .btn-link-subtle:hover, .btn-subtle:hover {
+        color: var(--trueblack);
+        background-color: var(--gray);
+      }
+
+      .btn-link-subtle.mr1, .btn-subtle.mr1 {
+        margin-right: 0.5rem;
+      }
+
+      .btn-link-subtle .material-icons, .btn-subtle .material-icons {
+        font-size: inherit;
+      }
+
       .bullet {
         height: 2rem;
         width: 2rem;
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-shrink: 0;
       }
 
       .bullet-margin {
         margin-left: 2rem;
       }
 
+      .markdown {
+        padding: 1rem 1rem 0rem 1rem;
+        border: 0.08rem solid var(--gray);
+        border-radius: 0.2rem;
+        background-color: var(--backgroundgray);
+      }
+
       .markdown p {
         margin-bottom: 1rem;
         line-height: 1.3rem;
+      }
+
+      .list-width {
+        width: calc(100% - 2rem);
       }
     </style>
 
