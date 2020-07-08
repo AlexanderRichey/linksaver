@@ -36,16 +36,35 @@
 {%- endmacro %}
 
 {% macro link(item) -%}
-<li data-itemid="{{ item.id }}" data-controller="note">
+<li data-itemid="{{ item.id }}" data-controller="link">
   <div class="flex items-center">
     <div class="bullet">
       <p>&#x1F30F</p>
     </div>
-    <div class="flex justify-between items-center list-width">
-      <button data-action="click->note#toggle" class="btn-unstyled fs-12 flex-auto left-align nowrap truncate overflow-hidden">
-        {{ item.title }}
-      </button>
-      <div data-target="note.chrome" class="chrome display-none flex">
+    <div class="list-width flex justify-between items-center">
+
+      <div data-target="link.nameContainer" class="link-name-container">
+        <button 
+          data-action="click->link#toggle"
+          class="link-name-btn btn-unstyled flex-auto left-align nowrap truncate">
+          {{ item.title }}
+        </button>
+        <a 
+          data-target="link.inlineLinkIcon"
+          class="inline-link-icon ml1"
+          href="{{ item.url }}"
+          target="_blank">
+          <span class="material-icons">open_in_new</span>
+        </a>
+      </div>
+
+      <div data-target="link.chrome" class="chrome display-none flex">
+        <div>
+          <a class="btn-link-subtle mr1" href="{{ item.url }}" target="_blank">
+            <span class="material-icons mr1">open_in_new</span>
+            <span>Visit</span>
+          </a>
+        </div>
         <div>
           <form action="/links/{{ item.id }}/delete" method="POST">
             <button type="submit" class="btn-subtle mr1">
@@ -61,13 +80,16 @@
           </a>
         </div>
       </div>
+
     </div>
   </div>
 
   <div class="bullet-margin">
-    <div data-target="note.content" class="markdown display-none my2">
+    <div data-target="link.content">
       {% if item.body %}
-        {{ item.body|markdown }}
+        <div class="markdown display-none my2">
+          {{ item.body|markdown }}
+        </div>
       {% endif %}
     </div>
   </div>

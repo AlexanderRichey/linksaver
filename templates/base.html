@@ -125,8 +125,9 @@
         font-family: var(--sans);
       }
 
-      button:focus {
-
+      button:focus, a:focus, button::-moz-focus-inner {
+        outline: none;
+        border: none;
       }
 
       .btn-large {
@@ -173,8 +174,31 @@
         margin-right: 0.5rem;
       }
 
-      .btn-link-subtle .material-icons, .btn-subtle .material-icons {
+      .btn-link-subtle .material-icons, .btn-subtle .material-icons,
+      .inline-link-icon .material-icons {
         font-size: inherit;
+      }
+
+      .inline-link-icon {
+        display: inline-flex;
+        border: none;
+        margin: 0;
+        background-color: var(--lightgray);
+        border-radius: 0.2rem;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        padding: 0.3rem;
+        color: var(--black);
+        text-decoration: none;
+        transition: all 0.2s ease;
+        width: 1.2rem;
+        height: 0.8rem;
+      }
+
+      .inline-link-icon:hover {
+        color: var(--trueblack);
+        background-color: var(--gray);
       }
 
       .bullet {
@@ -188,6 +212,19 @@
 
       .bullet-margin {
         margin-left: 2rem;
+      }
+
+      .link-name-container {
+        width: 100%
+      }
+
+      .link-name-container.open {
+        width: calc(100% - 19rem);
+      }
+
+      .link-name-btn {
+        max-width: calc(100% - 2.1rem);
+        font-size: 1.2rem;
       }
 
       .markdown {
@@ -204,6 +241,7 @@
 
       .list-width {
         width: calc(100% - 2rem);
+        height: 2rem;
       }
     </style>
 
@@ -220,6 +258,20 @@
           toggle() {
             this.contentTarget.classList.toggle("display-none")
             this.chromeTarget.classList.toggle("display-none")
+          }
+
+        })
+
+        application.register("link", class extends Stimulus.Controller {
+          static get targets() {
+            return [ "content", "chrome", "inlineLinkIcon", "nameContainer" ]
+          }
+
+          toggle() {
+            this.contentTarget.classList.toggle("display-none")
+            this.chromeTarget.classList.toggle("display-none")
+            this.inlineLinkIconTarget.classList.toggle("display-none")
+            this.nameContainerTarget.classList.toggle("open")
           }
 
         })
