@@ -11,6 +11,12 @@ from .templates import templates
 from .models import User, Item, TYPE_NOTE, TYPE_LINK
 from .forms import UserForm, NoteForm, LinkForm, ApiLinkForm
 from .magic import csrf_signer
+from .lib import HandlerFactory
+
+
+notes = HandlerFactory(TYPE_NOTE, Item, NoteForm, "note.html")
+
+links = HandlerFactory(TYPE_LINK, Item, LinkForm, "link.html")
 
 
 async def home(request):
@@ -108,90 +114,6 @@ async def delete_session(request):
     resp = RedirectResponse(url="/")
     resp.delete_cookie("session_id")
     return resp
-
-
-@requires(["authenticated"])
-async def note_form(request):
-    return templates.TemplateResponse(
-        "note.html",
-        {
-            "request": request,
-            "user": request.user,
-            "csrf": csrf_signer.sign(request.user.session_id).decode("utf-8"),
-        },
-    )
-
-
-@requires(["authenticated"])
-async def create_note(request):
-    context = {
-        "request": request,
-        "user": request.user,
-    }
-
-    try:
-        form_data = await request.form()
-        note_form = NoteForm(**dict(form_data))
-    except ValidationError as e:
-        for error in e.errors():
-            context[error["loc"][0]] = error["msg"]
-        return templates.TemplateResponse("note.html", context, 400)
-
-    if not csrf_signer.validate(note_form.csrf):
-        raise HTTPException(401)
-
-    item = Item(
-        email=request.user.email,
-        type=TYPE_NOTE,
-        title=note_form.title,
-        body=note_form.body,
-    )
-    item.put()
-
-    return RedirectResponse(url="/")
-
-
-@requires(["authenticated"])
-async def link_form(request):
-    return templates.TemplateResponse(
-        "link.html",
-        {
-            "request": request,
-            "user": request.user,
-            "csrf": csrf_signer.sign(request.user.session_id).decode("utf-8"),
-        },
-    )
-
-
-@requires(["authenticated"])
-async def create_link(request):
-    context = {
-        "request": request,
-        "user": request.user,
-    }
-
-    try:
-        form_data = await request.form()
-        link_form = LinkForm(**{k: v for k, v in dict(form_data).items() if v != ""})
-    except ValidationError as e:
-        for error in e.errors():
-            context[error["loc"][0]] = error["msg"]
-        return templates.TemplateResponse("link.html", context, 400)
-
-    if not csrf_signer.validate(link_form.csrf):
-        raise HTTPException(401)
-
-    item = Item(
-        email=request.user.email,
-        type=TYPE_LINK,
-        title=link_form.title,
-        body=link_form.body,
-        url=link_form.url,
-        favicon=link_form.favicon,
-    )
-    item.put()
-
-    return RedirectResponse(url="/")
 
 
 async def api_create_link(request):

@@ -4,10 +4,12 @@
     <div class="bullet">
       <p>&#x1F4DD</p>
     </div>
-    <div class="flex justify-between items-center w-100">
-      <button data-action="click->note#toggle" class="btn-unstyled fs-12 flex-auto left-align">
-        {{ item.title }}
-      </button>
+    <div class="link-line-item flex justify-between items-center">
+      <div class="link-name-container">
+        <button data-action="click->note#toggle" class="link-name-btn btn-unstyled fs-12 flex-auto left-align">
+          {{ item.title }}
+        </button>
+      </div>
       <div data-target="note.chrome" class="chrome display-none flex">
         <div>
           <form action="/links/{{ item.id }}/delete" method="POST">
@@ -18,7 +20,7 @@
           </form>
         </div>
         <div>
-          <a class="btn-link-subtle" href="/items/{{ item.id }}/edit">
+          <a class="btn-link-subtle" href="/notes/{{ item.id }}">
             <span class="material-icons mr1">edit</span>
             <span>Edit</span>
           </a>
@@ -41,7 +43,7 @@
     <div class="bullet">
       <p>&#x1F30F</p>
     </div>
-    <div class="list-width flex justify-between items-center">
+    <div data-target="link.lineItem" class="link-line-item flex justify-between items-center">
 
       <div data-target="link.nameContainer" class="link-name-container">
         <button 
@@ -51,7 +53,7 @@
         </button>
         <a 
           data-target="link.inlineLinkIcon"
-          class="inline-link-icon ml1"
+          class="link-inline-link-icon ml1"
           href="{{ item.url }}"
           target="_blank">
           <span class="material-icons">open_in_new</span>
@@ -74,7 +76,7 @@
           </form>
         </div>
         <div>
-          <a class="btn-link-subtle" href="/items/{{ item.id }}/edit">
+          <a class="btn-link-subtle" href="/links/{{ item.id }}">
             <span class="material-icons mr1">edit</span>
             <span>Edit</span>
           </a>

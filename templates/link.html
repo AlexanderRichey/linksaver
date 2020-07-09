@@ -1,35 +1,69 @@
 {% extends 'base.html' %}
+{% import 'partial/forms.html' as forms %}
 
-{% block title %}Linksaver | Add Link{% endblock %}
+{% block title %}
+  {% if link %}
+  Linksaver | Edit Link
+  {% else %}
+  Linksaver | Add Link
+  {% endif %}
+{% endblock %}
 
 {% block content %}
-<form action="/links" method="POST">
-  <input type="hidden" name="csrf" value="{{ csrf }}">
+<div class="max-width-3 mx-auto">
+  <form action="{{ action }}" method="POST">
+    <input type="hidden" name="csrf" value="{{ csrf }}">
 
-  <label>
-    <span>Title</span>
-    <input name="title" type="text">
-    <span>{{ title }}</span>
-  </label>
- 
-  <label>
-    <span>URL</span>
-    <input name="url" type="url" required>
-    <span>{{ url }}</span>
-  </label>
+    {% if link and link.title %}
+      {{ forms.input(
+          'title',
+          type='text',
+          autofocus='true',
+          value=link.title,
+          error=title) }}
+    {% else %}
+      {{ forms.input(
+          'title',
+          type='text',
+          autofocus='true',
+          error=title) }}
+    {% endif %}
 
-   <label>
-    <span>Favicon</span>
-    <input name="favicon" type="url">
-    <span>{{ favicon }}</span>
-  </label>
- 
-  <label>
-    <span>Body</span>
-    <textarea name="body"></textarea>
-    <span>{{ body }}</span>
-  </label>
+    {% if link and link.url %}
+      {{ forms.input(
+          'URL',
+          type='url',
+          value=link.url,
+          error=url) }}
+    {% else %}
+      {{ forms.input(
+          'URL',
+          type='url',
+          error=url) }}
+    {% endif %}
 
-  <button type="submit">Save</button>
-</form>
+    {% if link and link.favicon %}
+      {{ forms.input(
+          'Favicon',
+          type='url',
+          value=link.favicon,
+          error=favicon) }}
+    {% else %}
+      {{ forms.input(
+          'Favicon',
+          type='url',
+          error=favicon) }}
+    {% endif %}
+
+    {% if link and link.body %}
+      {{ forms.textarea('body', value=link.body, error=body) }}
+    {% else %}
+      {{ forms.textarea('body', error=body) }}
+    {% endif %}
+   
+    <div>
+      <button class="right mt1 btn-large" type="submit">Save</button>
+    </div>
+  </form>
+</div>
 {% endblock %}

@@ -1,16 +1,39 @@
 {% extends 'base.html' %}
 {% import 'partial/forms.html' as forms %}
 
-{% block title %}Linksaver | Create Note{% endblock %}
+{% block title %}
+  {% if note %}
+  Linksaver | Edit Note
+  {% else %}
+  Linksaver | Create Note
+  {% endif %}
+{% endblock %}
 
 {% block content %}
 <div class="max-width-3 mx-auto">
-  <form action="/notes" method="POST">
+  <form action="{{ action }}" method="POST">
     <input type="hidden" name="csrf" value="{{ csrf }}">
 
-    {{ forms.input('title', type='text', autofocus='true', error=title) }}
+    {% if note %}
+      {{ forms.input(
+          'title',
+          type='text',
+          autofocus='true',
+          value=note.title,
+          error=title) }}
+    {% else %}
+      {{ forms.input(
+          'title',
+          type='text',
+          autofocus='true',
+          error=title) }}
+    {% endif %}
 
-    {{ forms.textarea('body', error=body) }}
+    {% if note %}
+      {{ forms.textarea('body', value=note.body, error=body) }}
+    {% else %}
+      {{ forms.textarea('body', error=body) }}
+    {% endif %}
   
     <div>
       <button class="right mt1 btn-large" type="submit">Save</button>

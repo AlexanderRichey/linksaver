@@ -10,6 +10,7 @@
       id="{{ name|lower }}"
       name="{{ name|lower }}"
       type="{{ type }}"
+      value="{{ value }}"
       {% if autofocus == 'true' %}
       autofocus
       {% endif %}
@@ -35,7 +36,7 @@
       data-action="input->textarea#adjustHeight"
       data-target="textarea.editor"
       id="{{ name|lower }}"
-      name="{{ name|lower }}"></textarea>
+      name="{{ name|lower }}">{{ value }}</textarea>
   </div>
   <div>
     <p class="red">

@@ -62,22 +62,6 @@
         margin: 0;
       }
 
-      .underline {
-        border-bottom: 0.05rem solid currentColor;
-      }
-
-      .fs-16 {
-        font-size: 1.6rem;
-      }
-
-      .fs-12 {
-        font-size: 1.2rem;
-      }
-
-      .w-100 {
-        width: 100%;
-      }
-
       input {
         width: calc(100% - 1rem);
         padding: 0.5rem;
@@ -175,11 +159,24 @@
       }
 
       .btn-link-subtle .material-icons, .btn-subtle .material-icons,
-      .inline-link-icon .material-icons {
+      .link-inline-link-icon .material-icons {
         font-size: inherit;
       }
 
-      .inline-link-icon {
+      .bullet {
+        height: 2rem;
+        width: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+      }
+
+      .bullet-margin {
+        margin-left: 2rem;
+      }
+
+      .link-inline-link-icon {
         display: inline-flex;
         border: none;
         margin: 0;
@@ -196,22 +193,9 @@
         height: 0.8rem;
       }
 
-      .inline-link-icon:hover {
+      .link-inline-link-icon:hover {
         color: var(--trueblack);
         background-color: var(--gray);
-      }
-
-      .bullet {
-        height: 2rem;
-        width: 2rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-shrink: 0;
-      }
-
-      .bullet-margin {
-        margin-left: 2rem;
       }
 
       .link-name-container {
@@ -227,6 +211,15 @@
         font-size: 1.2rem;
       }
 
+      .link-line-item {
+        width: calc(100% - 2rem);
+        height: 2rem;
+        padding: 0.2rem 0;
+      }
+
+      .link-line-item.open {
+      }
+
       .markdown {
         padding: 1rem 1rem 0rem 1rem;
         border: 0.08rem solid var(--gray);
@@ -239,9 +232,20 @@
         line-height: 1.3rem;
       }
 
-      .list-width {
-        width: calc(100% - 2rem);
-        height: 2rem;
+      .underline {
+        border-bottom: 0.05rem solid currentColor;
+      }
+
+      .fs-16 {
+        font-size: 1.6rem;
+      }
+
+      .fs-12 {
+        font-size: 1.2rem;
+      }
+
+      .w-100 {
+        width: 100%;
       }
     </style>
 
@@ -264,7 +268,7 @@
 
         application.register("link", class extends Stimulus.Controller {
           static get targets() {
-            return [ "content", "chrome", "inlineLinkIcon", "nameContainer" ]
+            return [ "content", "chrome", "inlineLinkIcon", "nameContainer", "lineItem" ]
           }
 
           toggle() {
@@ -272,6 +276,7 @@
             this.chromeTarget.classList.toggle("display-none")
             this.inlineLinkIconTarget.classList.toggle("display-none")
             this.nameContainerTarget.classList.toggle("open")
+            this.lineItemTarget.classList.toggle("open")
           }
 
         })
