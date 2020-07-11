@@ -1,24 +1,25 @@
 <header class="flex items-center justify-between">
   <div>
-    <h1 class="m0 p0 h3 regular">Linksaver</h1>
+    <h1 class="m0 p0 regular">&#x1F517</h1>
   </div>
   <div>
-    <p class="m0 p0">
+    <nav class="m0 p0 flex">
       {% if user.is_authenticated %}
-        <span><code>{{ user.display_name }}</code></span>
-        <span> / </span>
-        <span><code>{{ user.token }}</code></span>
-        <span> / </span>
-        <a href="/notes">New note</a>
-        <span> / </span>
-        <a href="/logout">Logout</a>
+        <a class="btn-link-subtle mr1" href="/notes">
+          <span class="material-icons mr1">edit</span>
+          <span>New Note</span>
+        </a>
+        <a class="btn-link-subtle" href="/logout">
+          <span class="material-icons mr1">login</span>
+          <span>Logout</span>
+        </a>
       {% else %}
-        <a href="/">Home</a>
-        <span> / </span>
+      <p>
         <a href="/sessions">Login</a>
         <span> / </span>
         <a href="/users">Sign up</a>
+      </p>
       {% endif %}
-    </p>
+    </nav>
   </div>
 </header>

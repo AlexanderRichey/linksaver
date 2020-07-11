@@ -18,14 +18,12 @@
       {{ forms.input(
           'title',
           type='text',
-          autofocus='true',
           value=link.title,
           error=title) }}
     {% else %}
       {{ forms.input(
           'title',
           type='text',
-          autofocus='true',
           error=title) }}
     {% endif %}
 
@@ -55,14 +53,17 @@
           error=favicon) }}
     {% endif %}
 
+    <hr class="mb3 mt2" />
+
     {% if link and link.body %}
-      {{ forms.textarea('body', value=link.body, error=body) }}
+      {{ forms.textarea('body', autofocus='true', value=link.body, error=body) }}
     {% else %}
-      {{ forms.textarea('body', error=body) }}
+      {{ forms.textarea('body', autofocus='true', error=body) }}
     {% endif %}
    
-    <div>
-      <button class="right mt1 btn-large" type="submit">Save</button>
+    <div class="mt3">
+      <button class="right btn-large" type="submit">Save</button>
+      <a href="/" class="right mx2 btn-large gray">Cancel</a>
     </div>
   </form>
 </div>

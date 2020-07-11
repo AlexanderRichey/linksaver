@@ -4,6 +4,7 @@ from datetime import datetime
 from pydantic import BaseModel, EmailStr, HttpUrl, validator
 from starlette.authentication import BaseUser
 from bson.objectid import ObjectId
+import pymongo
 
 from .db import db
 
@@ -123,7 +124,9 @@ class Item(BaseModel):
     @staticmethod
     def get_by_user(user: User):
         items = []
-        for item in db.items.find({"email": user.email}):
+        for item in db.items.find({"email": user.email}).sort(
+            "created_at", pymongo.DESCENDING
+        ):
             items.append(Item.construct(**Item.clean_item(item)))
         return items
 

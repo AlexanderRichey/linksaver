@@ -5,12 +5,18 @@
       <p>&#x1F4DD</p>
     </div>
     <div class="link-line-item flex justify-between items-center">
-      <div class="link-name-container">
-        <button data-action="click->note#toggle" class="link-name-btn btn-unstyled fs-12 flex-auto left-align">
+      <div data-target="note.nameContainer" class="link-name-container">
+        <button data-action="click->note#toggle" class="link-name-btn truncate btn-unstyled">
           {{ item.title }}
         </button>
       </div>
       <div data-target="note.chrome" class="chrome display-none flex">
+        <div>
+          <button type="submit" class="btn-subtle mr1" data-action="click->note#toggle">
+            <span class="material-icons mr1">menu_open</span>
+            <span>Close</span>
+          </button>
+        </div>
         <div>
           <form action="/links/{{ item.id }}/delete" method="POST">
             <button type="submit" class="btn-subtle mr1">
@@ -46,26 +52,26 @@
     <div data-target="link.lineItem" class="link-line-item flex justify-between items-center">
 
       <div data-target="link.nameContainer" class="link-name-container">
-        <button 
-          data-action="click->link#toggle"
-          class="link-name-btn btn-unstyled flex-auto left-align nowrap truncate">
-          {{ item.title }}
-        </button>
         <a 
-          data-target="link.inlineLinkIcon"
-          class="link-inline-link-icon ml1"
+          target="_blank"
           href="{{ item.url }}"
-          target="_blank">
-          <span class="material-icons">open_in_new</span>
+          class="link-name-btn flex left-align nowrap truncate">
+          {{ item.title }}
         </a>
+        <button
+          data-target="link.inlineLinkIcon"
+          data-action="click->link#toggle"
+          class="link-inline-link-icon">
+          <span class="material-icons block">menu</span>
+        </button>
       </div>
 
       <div data-target="link.chrome" class="chrome display-none flex">
         <div>
-          <a class="btn-link-subtle mr1" href="{{ item.url }}" target="_blank">
-            <span class="material-icons mr1">open_in_new</span>
-            <span>Visit</span>
-          </a>
+          <button type="submit" class="btn-subtle mr1" data-action="click->link#toggle">
+            <span class="material-icons mr1">menu_open</span>
+            <span>Close</span>
+          </button>
         </div>
         <div>
           <form action="/links/{{ item.id }}/delete" method="POST">
@@ -87,9 +93,9 @@
   </div>
 
   <div class="bullet-margin">
-    <div data-target="link.content">
+    <div data-target="link.content" class="display-none">
       {% if item.body %}
-        <div class="markdown display-none my2">
+        <div class="markdown my2">
           {{ item.body|markdown }}
         </div>
       {% endif %}

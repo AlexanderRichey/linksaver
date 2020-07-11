@@ -62,6 +62,12 @@
         margin: 0;
       }
 
+      hr {
+        display: block;
+        border: 0.08rem dashed;
+        color: var(--gray);
+      }
+
       input {
         width: calc(100% - 1rem);
         padding: 0.5rem;
@@ -82,25 +88,36 @@
       }
 
       textarea {
-        width: calc(100% - 1rem);
-        padding: 0.5rem;
-        border: 0.08rem solid var(--gray);
+        width: calc(100% - 1.6rem);
         font-family: var(--monospace);
-        border-radius: 0.2rem;
-        background-color: var(--lightgray);
         font-size: 1.2rem;
+        border: none;
         resize: none;
         overflow: hidden;
-        min-height: 8rem;
-        background-color: var(--backgroundgray);
+        min-height: 18rem;
+        line-height: 1.6em;
       }
 
       textarea:hover {
-        border: 0.08rem solid var(--darkgray);
+        border: none;
       }
 
       textarea:focus {
-        border: 0.08rem solid var(--trueblack);
+        border: none;
+      }
+
+      a {
+        color: var(--black);
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: var(--trueblack);
+        text-decoration: underline;
+      }
+
+      ul, ol {
+        margin-bottom: 1rem;
       }
 
       button {
@@ -123,8 +140,19 @@
         transition: all 0.2s ease;
       }
 
+      .btn-large.gray {
+        background-color: var(--lightgray);
+        color: var(--black);
+      }
+
       .btn-large:hover {
         background-color: var(--trueblack);
+      }
+
+      .btn-large.gray:hover {
+        background-color: var(--gray);
+        color: var(--trueblack);
+        text-decoration: none;
       }
 
       .btn-unstyled {
@@ -152,6 +180,7 @@
       .btn-link-subtle:hover, .btn-subtle:hover {
         color: var(--trueblack);
         background-color: var(--gray);
+        text-decoration: none;
       }
 
       .btn-link-subtle.mr1, .btn-subtle.mr1 {
@@ -180,6 +209,7 @@
         display: inline-flex;
         border: none;
         margin: 0;
+        margin-left: 0.5rem;
         background-color: var(--lightgray);
         border-radius: 0.2rem;
         align-items: center;
@@ -189,8 +219,8 @@
         color: var(--black);
         text-decoration: none;
         transition: all 0.2s ease;
-        width: 1.2rem;
-        height: 0.8rem;
+        width: 1.5rem;
+        height: 1.5rem;
       }
 
       .link-inline-link-icon:hover {
@@ -199,6 +229,7 @@
       }
 
       .link-name-container {
+        display: flex;
         width: 100%
       }
 
@@ -209,6 +240,7 @@
       .link-name-btn {
         max-width: calc(100% - 2.1rem);
         font-size: 1.2rem;
+        display: inline-flex;
       }
 
       .link-line-item {
@@ -221,7 +253,7 @@
       }
 
       .markdown {
-        padding: 1rem 1rem 0rem 1rem;
+        padding: 1rem 1rem 0.5rem 1rem;
         border: 0.08rem solid var(--gray);
         border-radius: 0.2rem;
         background-color: var(--backgroundgray);
@@ -230,6 +262,10 @@
       .markdown p {
         margin-bottom: 1rem;
         line-height: 1.3rem;
+      }
+
+      .markdown h1, .markdown h2, .markdown h3 {
+        margin: 0 0 1rem 0;
       }
 
       .underline {
@@ -256,12 +292,13 @@
 
         application.register("note", class extends Stimulus.Controller {
           static get targets() {
-            return [ "content", "chrome" ]
+            return [ "content", "chrome", "nameContainer" ]
           }
 
           toggle() {
             this.contentTarget.classList.toggle("display-none")
             this.chromeTarget.classList.toggle("display-none")
+            this.nameContainerTarget.classList.toggle("open")
           }
 
         })
@@ -284,6 +321,10 @@
         application.register("textarea", class extends Stimulus.Controller {
           static get targets() {
             return [ "editor" ]
+          }
+
+          connect() {
+            this.adjustHeight()
           }
 
           adjustHeight() {

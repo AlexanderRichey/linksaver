@@ -1,5 +1,7 @@
 from pydantic import BaseModel, EmailStr, Field, HttpUrl, validator
 from typing import Optional
+from datetime import datetime
+import html
 
 
 class UserForm(BaseModel):
@@ -8,15 +10,24 @@ class UserForm(BaseModel):
 
 
 class NoteForm(BaseModel):
-    title: Optional[str] = None
     body: str
+    title: str = ""
     csrf: str
 
     @validator("body")
     def body_not_empty(cls, v):
         if len(v) == 0:
             raise ValueError("body cannot be empty")
-        return v
+        return html.escape(v)
+
+    @validator("title", always=True)
+    def derive_title(cls, v, values):
+        if "body" in values:
+            split = values["body"].split("\n")
+            if len(split) > 0 and len(split[0]) > 1:
+                return split[0][:64]
+        timestamp = datetime.now().strftime("%-I:%M %p")
+        return f"Note @ {timestamp}"
 
 
 class LinkForm(BaseModel):

@@ -48,12 +48,15 @@ class HandlerFactory:
             "user": request.user,
         }
 
+        form_data = await request.form()
+        clean_form_data = {k: v for k, v in form_data.items() if v}
+
         try:
-            form_data = await request.form()
-            note_form = self.resource_form(**dict(form_data))
+            note_form = self.resource_form(**dict(clean_form_data))
         except ValidationError as e:
             for error in e.errors():
                 context[error["loc"][0]] = error["msg"]
+            context[self.resource_type] = clean_form_data
             return templates.TemplateResponse(self.template, context, 400)
 
         if not csrf_signer.validate(note_form.csrf):
@@ -76,7 +79,9 @@ class HandlerFactory:
 
         try:
             form_data = await request.form()
-            note_form = self.resource_form(**dict(form_data))
+            note_form = self.resource_form(
+                **dict({k: v for k, v in form_data.items() if v})
+            )
         except ValidationError as e:
             for error in e.errors():
                 context[error["loc"][0]] = error["msg"]

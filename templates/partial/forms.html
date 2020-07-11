@@ -24,18 +24,17 @@
 </div>
 {%- endmacro %}
 
-{%- macro textarea(name, value='', rows=10, cols=40, error='') -%}
+{%- macro textarea(name, value='', rows=10, cols=40, error='', autofocus='false') -%}
 <div data-controller="textarea">
-  <div class="pb1">
-    <label for="{{ name|lower }}">
-      <small>{{ name|title }}</small>
-    </label>
-  </div>
   <div class="mb1">
     <textarea
       data-action="input->textarea#adjustHeight"
       data-target="textarea.editor"
+      placeholder="Type something..."
       id="{{ name|lower }}"
+      {% if autofocus == 'true' %}
+      autofocus
+      {% endif %}
       name="{{ name|lower }}">{{ value }}</textarea>
   </div>
   <div>

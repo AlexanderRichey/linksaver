@@ -15,28 +15,14 @@
     <input type="hidden" name="csrf" value="{{ csrf }}">
 
     {% if note %}
-      {{ forms.input(
-          'title',
-          type='text',
-          autofocus='true',
-          value=note.title,
-          error=title) }}
+      {{ forms.textarea('body', autofocus='true', value=note.body, error=body) }}
     {% else %}
-      {{ forms.input(
-          'title',
-          type='text',
-          autofocus='true',
-          error=title) }}
-    {% endif %}
-
-    {% if note %}
-      {{ forms.textarea('body', value=note.body, error=body) }}
-    {% else %}
-      {{ forms.textarea('body', error=body) }}
+      {{ forms.textarea('body', autofocus='true', error=body) }}
     {% endif %}
   
-    <div>
-      <button class="right mt1 btn-large" type="submit">Save</button>
+    <div class="mt3">
+      <button class="right btn-large" type="submit">Save</button>
+      <a href="/" class="right mx2 btn-large gray">Cancel</a>
     </div>
   </form>
 </div>
