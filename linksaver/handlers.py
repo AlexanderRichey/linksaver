@@ -30,6 +30,69 @@ async def home(request):
     return templates.TemplateResponse("index.html", context)
 
 
+async def oauth_form(request):
+    client_id = request.query_params.get("client_id")
+    redirect_uri = request.query_params.get("redirect_uri")
+
+    if not client_id in ["ff", "chromium"]:
+        raise HTTPException(404)
+    if not redirect_uri:
+        raise HTTPException(404)
+
+    if request.user.is_authenticated:
+        return RedirectResponse(url=f"{redirect_uri}?token={request.user.token}")
+    context = {
+        "request": request,
+        "user": request.user,
+        "heading_text": "Login",
+        "page_title": "Login",
+        "action": f"/oauth?client_id={client_id}&redirect_uri={redirect_uri}",
+        "button_text": "Login",
+    }
+    return templates.TemplateResponse("auth.html", context)
+
+
+async def oauth(request):
+    client_id = request.query_params.get("client_id")
+    redirect_uri = request.query_params.get("redirect_uri")
+
+    if not client_id in ["ff", "chromium"]:
+        raise HTTPException(404)
+    if not redirect_uri:
+        raise HTTPException(404)
+
+    context = {
+        "request": request,
+        "user": request.user,
+        "heading_text": "Login",
+        "page_title": "Login",
+        "action": f"/oauth?client_id={client_id}&redirect_uri={redirect_uri}",
+        "button_text": "Login",
+        "password": "Invalid credentials",
+    }
+    try:
+        form_data = await request.form()
+        user_form = UserForm(**dict(form_data))
+    except ValidationError as e:
+        for error in e.errors():
+            context[error["loc"][0]] = error["msg"]
+        return templates.TemplateResponse("auth.html", context, 400)
+
+    user = User.get_by_email(user_form.email)
+    if not user:
+        return templates.TemplateResponse("auth.html", context, 400)
+
+    if bcrypt.checkpw(
+        bytes(user_form.password, encoding="utf8"),
+        bytes(user.password_digest, encoding="utf8"),
+    ):
+        return RedirectResponse(
+            url=f"{redirect_uri}?token={user.token}", status_code=302
+        )
+
+    return templates.TemplateResponse("auth.html", context, 400)
+
+
 async def user_form(request):
     if request.user.is_authenticated:
         return RedirectResponse(url="/")

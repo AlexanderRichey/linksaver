@@ -1,30 +1,40 @@
 const main = document.querySelector("main");
-const token = "Rub1rhsH2jaOdP0Q5om_1A";
 
 chrome.tabs.query({ active: true, lastFocusedWindow: true }, tabs => {
   const tab = tabs[0];
 
-  fetch("http://localhost:8000/api/links", {
-    headers: new Headers({
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`
-    }),
-    method: "POST",
-    mode: "cors",
-    body: JSON.stringify({
-      title: tab.title,
-      url: tab.url,
-      favicon: tab.favIconUrl.startsWith("https") ? tab.favIconUrl : ""
+  chrome.storage.local.get(["token"], store => {
+    if (!store.token) {
+      window.open(chrome.runtime.getURL("options.html"));
+      main.innerHTML = "<p>need to authenticate</p>";
+      return;
+    }
+
+    fetch("http://localhost:8080/api/links", {
+      headers: new Headers({
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${store.token}`
+      }),
+      method: "POST",
+      mode: "cors",
+      body: JSON.stringify({
+        title: tab.title,
+        url: tab.url,
+        favicon:
+          tab.favIconUrl && tab.favIconUrl.startsWith("https")
+            ? tab.favIconUrl
+            : ""
+      })
     })
-  })
-    .then(response => {
-      if (response.status == 201) {
-        main.innerHTML = "<p>worked</p>";
-      } else {
-        main.innerHTML = "<p>nope</p>";
-      }
-    })
-    .catch(error => {
-      main.innerHTML = "<p>nope</p>";
-    });
+      .then(response => {
+        if (response.status == 201) {
+          main.innerHTML = "<p>&#x2705</p>";
+        } else {
+          main.innerHTML = "<p>&#x1f61e</p>";
+        }
+      })
+      .catch(() => {
+        main.innerHTML = "<p>&#x1f4e0</p>";
+      });
+  });
 });

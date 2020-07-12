@@ -1,7 +1,8 @@
 import os
 from starlette.applications import Starlette
 from starlette.responses import JSONResponse
-from starlette.routing import Route
+from starlette.routing import Route, Mount
+from starlette.staticfiles import StaticFiles
 from starlette.middleware import Middleware
 from starlette.middleware.authentication import AuthenticationMiddleware
 
@@ -14,6 +15,8 @@ from .handlers import (
     delete_session,
     links,
     notes,
+    oauth_form,
+    oauth,
     api_create_link,
 )
 from .auth import CookieAuthBackend
@@ -30,6 +33,8 @@ app = Starlette(
         Route("/users", create_user, methods=["POST"]),
         Route("/sessions", session_form, methods=["GET"]),
         Route("/sessions", create_session, methods=["POST"]),
+        Route("/oauth", oauth_form, methods=["GET"]),
+        Route("/oauth", oauth, methods=["POST"]),
         Route("/logout", delete_session, methods=["GET"]),
         Route("/links", links.render_form, methods=["GET"]),
         Route("/links", links.create_resource, methods=["POST"]),
@@ -42,5 +47,6 @@ app = Starlette(
         Route("/notes/{id}/update", notes.update_resource, methods=["POST"]),
         Route("/notes/{id}/delete", notes.delete_resource, methods=["POST"]),
         Route("/api/links", api_create_link, methods=["POST", "OPTIONS"]),
+        Mount("/", app=StaticFiles(directory="static")),
     ],
 )

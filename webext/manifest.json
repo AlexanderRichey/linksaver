@@ -5,10 +5,17 @@
   "version": "0.1",
   "description": "Save your links",
   "homepage_url": "https://github.com/AlexanderRichey/linksaver",
-  "permissions": ["tabs", "storage"],
-  "icons": {},
+  "permissions": ["identity", "storage", "activeTab"],
+  "icons": {
+    "16": "favicon-16x16.png",
+    "32": "favicon-32x32.png"
+  },
   "browser_action": {
     "default_popup": "popover.html"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
   },
   "content_security_policy": "script-src 'self' 'unsafe-eval' blob: ; object-src 'self' blob: filesystem:;"
 }
