@@ -77,6 +77,7 @@
         font-family: "Inter", sans-serif;
         transition: all 0.2s ease;
         background-color: var(--backgroundgray);
+        outline: none;
       }
 
       input:hover {
@@ -85,6 +86,10 @@
 
       input:focus {
         border: 0.08rem solid var(--trueblack);
+      }
+
+      input:active {
+        border: 0.1rem solid var(--trueblack);
       }
 
       textarea {
@@ -96,6 +101,7 @@
         overflow: hidden;
         min-height: 18rem;
         line-height: 1.6em;
+        outline: none;
       }
 
       textarea:hover {
@@ -126,9 +132,11 @@
         font-family: var(--sans);
       }
 
-      button:focus, a:focus, button::-moz-focus-inner {
+      button:focus, a:focus, a:active, button::-moz-focus-inner, button:active, input:focus, input:active {
         outline: none;
         border: none;
+        box-shadow: 0 0 0 0.2rem var(--gray);
+        border-radius: 0.2rem;
       }
 
       .btn-large {
@@ -138,6 +146,7 @@
         border: none;
         font-size: 1rem;
         transition: all 0.2s ease;
+        border-radius: 0.2rem;
       }
 
       .btn-large.gray {

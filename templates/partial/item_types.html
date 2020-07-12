@@ -1,5 +1,5 @@
 {% macro note(item) -%}
-<li data-itemid="{{ item.id }}" data-controller="note">
+<li data-controller="note">
   <div class="flex items-center">
     <div class="bullet">
       <p>&#x1F4DD</p>
@@ -44,7 +44,7 @@
 {%- endmacro %}
 
 {% macro link(item) -%}
-<li data-itemid="{{ item.id }}" data-controller="link">
+<li data-controller="link">
   <div class="flex items-center">
     <div class="bullet">
       <p>&#x1F30F</p>

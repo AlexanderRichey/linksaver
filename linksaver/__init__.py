@@ -1,3 +1,4 @@
+import os
 from starlette.applications import Starlette
 from starlette.responses import JSONResponse
 from starlette.routing import Route
@@ -20,7 +21,7 @@ from .db import client
 
 
 app = Starlette(
-    debug=True,
+    debug=os.getenv("DEBUG"),
     on_shutdown=[client.close],
     middleware=[Middleware(AuthenticationMiddleware, backend=CookieAuthBackend())],
     routes=[

@@ -25,7 +25,7 @@ class NoteForm(BaseModel):
         if "body" in values:
             split = values["body"].split("\n")
             if len(split) > 0 and len(split[0]) > 1:
-                return split[0][:64]
+                return split[0].strip(" #")[:64]
         timestamp = datetime.now().strftime("%-I:%M %p")
         return f"Note @ {timestamp}"
 

@@ -1,5 +1,7 @@
+import os
 from pymongo import MongoClient
 
+DB_CONNECTION = os.getenv("DB_CONNECTION")
 
-client = MongoClient("mongo", 27017)
-db = client.test_database
+client = MongoClient(DB_CONNECTION)
+db = client.test
