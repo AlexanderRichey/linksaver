@@ -364,9 +364,11 @@
           }
 
           connect() {
-            this.imageTarget.addEventListener("error", () => {
-              this.containerTarget.innerHTML = "<p>&#x1F30F</p>"
-            })
+            if (this.imageTarget.tagName.toUpperCase() === "IMG") {
+              this.imageTarget.addEventListener("error", () => {
+                this.containerTarget.innerHTML = "<p>&#x1F30F</p>"
+              })
+            }
           }
         })
 
