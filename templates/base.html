@@ -274,15 +274,19 @@
       }
 
       .markdown {
-        padding: 1rem 1rem 0.5rem 1rem;
+        padding: 1rem;
         border: 0.08rem solid var(--gray);
         border-radius: 0.2rem;
         background-color: var(--backgroundgray);
       }
 
-      .markdown p {
+      .markdown p, .markdown ol, .markdown ul {
         margin-bottom: 1rem;
         line-height: 1.3rem;
+      }
+
+      .markdown p:last-child, .markdown ol:last-child, .markdown ul:last-child {
+        margin-bottom: 0rem;
       }
 
       .markdown h1, .markdown h2, .markdown h3 {
