@@ -1,7 +1,6 @@
 from pydantic import BaseModel, EmailStr, Field, HttpUrl, validator
 from typing import Optional
 from datetime import datetime
-import html
 
 
 class UserForm(BaseModel):
@@ -18,7 +17,7 @@ class NoteForm(BaseModel):
     def body_not_empty(cls, v):
         if len(v) == 0:
             raise ValueError("body cannot be empty")
-        return html.escape(v)
+        return v
 
     @validator("title", always=True)
     def derive_title(cls, v, values):

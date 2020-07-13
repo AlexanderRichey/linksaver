@@ -10,7 +10,7 @@ chrome.tabs.query({ active: true, lastFocusedWindow: true }, tabs => {
       return;
     }
 
-    fetch("http://localhost:8080/api/links", {
+    fetch("https://linksaver.onrender.com/api/links", {
       headers: new Headers({
         "Content-Type": "application/json",
         Authorization: `Bearer ${store.token}`

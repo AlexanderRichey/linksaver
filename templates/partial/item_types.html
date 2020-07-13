@@ -46,8 +46,12 @@
 {% macro link(item) -%}
 <li data-controller="link">
   <div class="flex items-center">
-    <div class="bullet">
-      <p>&#x1F30F</p>
+    <div class="bullet" data-controller="bullet" data-target="bullet.container">
+      {% if item.favicon %}
+        <img src="{{ item.favicon }}" class="link-favicon" data-target="bullet.image">
+      {% else %}
+        <p>&#x1F30F</p>
+      {% endif %}
     </div>
     <div data-target="link.lineItem" class="link-line-item flex justify-between items-center">
 

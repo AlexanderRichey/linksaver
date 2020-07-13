@@ -139,7 +139,7 @@
         font-family: var(--sans);
       }
 
-      button:focus, a:focus, a:active, button::-moz-focus-inner, button:active, input:focus, input:active {
+      button:focus, a:focus, a:active, button:active, input:focus, input:active {
         outline: none;
         border: none;
         box-shadow: 0 0 0 0.2rem var(--gray);
@@ -219,6 +219,11 @@
 
       .bullet-margin {
         margin-left: 2rem;
+      }
+
+      .link-favicon {
+        height: 60%;
+        width: 60%;
       }
 
       .link-inline-link-icon {
@@ -347,7 +352,18 @@
             this.editorTarget.style.height = "5px"
             this.editorTarget.style.height = (this.editorTarget.scrollHeight) + "px"
           }
+        })
 
+        application.register("bullet", class extends Stimulus.Controller {
+          static get targets() {
+            return [ "image", "container" ]
+          }
+
+          connect() {
+            this.imageTarget.addEventListener("error", () => {
+              this.containerTarget.innerHTML = "<p>&#x1F30F</p>"
+            })
+          }
         })
 
       })()
