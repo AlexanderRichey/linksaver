@@ -5,7 +5,13 @@ from datetime import datetime
 
 class UserForm(BaseModel):
     email: EmailStr
-    password: str = Field(regex=r"^\w{6,}$")
+    password: str
+
+    @validator("password")
+    def password_long_enough(cls, v):
+        if len(v) < 5:
+            raise ValueError("password must be at least 6 characters long")
+        return v
 
 
 class NoteForm(BaseModel):

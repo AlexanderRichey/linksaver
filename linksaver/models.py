@@ -1,7 +1,7 @@
 from secrets import token_urlsafe
 from typing import Optional, Literal
 from datetime import datetime
-from pydantic import BaseModel, EmailStr, HttpUrl, validator
+from pydantic import BaseModel, EmailStr, HttpUrl, validator, Field
 from starlette.authentication import BaseUser
 from bson.objectid import ObjectId
 import pymongo
@@ -32,8 +32,8 @@ class User(BaseModel, BaseUser):
     password_digest: str
     session_id: str = token_urlsafe(16)
     token: str = token_urlsafe(16)
-    created_at: datetime = datetime.now()
-    updated_at: datetime = datetime.now()
+    created_at: datetime = Field(default_factory=datetime.now)
+    updated_at: datetime = Field(default_factory=datetime.now)
 
     @classmethod
     def get_by_session_id(cls, session_id):
@@ -89,8 +89,8 @@ class Item(BaseModel):
     favicon: Optional[HttpUrl] = None
     title: Optional[str] = None
     body: Optional[str] = None
-    created_at: datetime = datetime.now()
-    updated_at: datetime = datetime.now()
+    created_at: datetime = Field(default_factory=datetime.now)
+    updated_at: datetime = Field(default_factory=datetime.now)
 
     @validator("url")
     def url_not_none_for_links(cls, v, values):
