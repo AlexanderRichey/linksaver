@@ -11,6 +11,7 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#aaaaaa">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
     <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css">
     <link rel="stylesheet" href="https://unpkg.com/basscss@8.0.2/css/basscss.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -309,7 +310,7 @@
         width: 100%;
       }
     </style>
-
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
     <script src="https://unpkg.com/stimulus/dist/stimulus.umd.js"></script>
     <script>
       (() => {
@@ -349,13 +350,18 @@
           }
 
           connect() {
-            this.adjustHeight()
+            this.simplemde = new SimpleMDE({ 
+              element: this.editorTarget,
+              autofocus: true,
+              spellChecker: false,
+            });
           }
 
-          adjustHeight() {
-            this.editorTarget.style.height = "5px"
-            this.editorTarget.style.height = (this.editorTarget.scrollHeight) + "px"
+          disconnect() {
+            this.simplemde.toTextArea()
+            this.simplemde = null
           }
+
         })
 
         application.register("bullet", class extends Stimulus.Controller {
