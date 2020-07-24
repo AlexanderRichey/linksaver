@@ -81,6 +81,8 @@ class User(BaseModel, BaseUser):
         self.session_id = token_urlsafe(16)
 
 
+PAGE_SIZE = 80
+
 class Item(BaseModel):
     id: Optional[str]
     email: EmailStr
@@ -122,9 +124,13 @@ class Item(BaseModel):
         return cls.construct(**Item.clean_item(item))
 
     @staticmethod
-    def get_by_user(user: User):
+    def get_by_user(user: User, page: int = 0):
         items = []
-        for item in db.items.find({"email": user.email}).sort(
+        for item in db.items.find(
+            filter={"email": user.email},
+            skip=page * PAGE_SIZE,
+            limit=PAGE_SIZE,
+        ).sort(
             "created_at", pymongo.DESCENDING
         ):
             items.append(Item.construct(**Item.clean_item(item)))

@@ -2,17 +2,39 @@
 
 <div class="max-width-3">
   {% for day, items in days.items() %}
-  <section>
-    <h3>{{ day }}</h3>
-    <ul class="list-reset">
-      {% for item in items %}
-        {% if item.type == 'note' %}
-          {{ itemtypes.note(item) }}
-        {% else %}
-          {{ itemtypes.link(item) }}
-        {% endif %}
-      {% endfor %}
-    </ul>
-  </section>
+    <section>
+      <h3>{{ day }}</h3>
+      <ul class="list-reset">
+        {% for item in items %}
+          {% if item.type == 'note' %}
+            {{ itemtypes.note(item) }} 
+          {% else %}
+            {{ itemtypes.link(item) }}
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </section>
   {% endfor %}
+
+  {% if days|length == 0 %}
+    {% if page == 0 %}
+      <p>You haven't added anything yet</p>
+    {% else %}
+      <p>There's nothing here</p>
+    {% endif %}
+  {% endif %}
+
+  {% if not (days|length == 0 and page == 0) %}
+    <div class="flex mt3">
+      <a class="btn-link-subtle mr1"  href="/?page={{ prev_page }}">
+        <span class="material-icons mr1">keyboard_arrow_left</span>
+        <span>Newer</span>
+      </a>
+
+      <a class="btn-link-subtle" href="/?page={{ next_page }}">
+        <span>Older</span>
+        <span class="material-icons ml1">keyboard_arrow_right</span>
+      </a>
+    </div>
+  {% endif %}
 </div>

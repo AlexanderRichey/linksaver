@@ -5,11 +5,7 @@
 {% block content %}
   {% if user.is_authenticated %}
     <div class="max-width-3 mx-auto">
-      {% if days|length == 0 %}
-        <p>You haven't added anything yet</p>
-      {% else %}
-        {% include 'partial/items_by_day.html'%}
-      {% endif %}
+      {% include 'partial/items_by_day.html'%}
     </div>
   {% else %}
     <ul>

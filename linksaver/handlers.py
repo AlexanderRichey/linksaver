@@ -22,11 +22,20 @@ links = HandlerFactory(TYPE_LINK, Item, LinkForm, "link.html")
 async def home(request):
     context = {"request": request, "user": request.user}
     if request.user.is_authenticated:
-        items = Item.get_by_user(request.user)
+        page = request.query_params.get("page", 0)
+        try:
+            page = int(page)
+        except ValueError:
+            page = 0
+        page = abs(page)
+
+        items = Item.get_by_user(request.user, page)
         days = collections.defaultdict(list)
         for item in items:
             days[item.created_at.strftime("%A %-d %B")].append(item)
         context["days"] = days
+        context["next_page"] = abs(page + 1)
+        context["prev_page"] = max(page - 1, 0)
     return templates.TemplateResponse("index.html", context)
 
 
