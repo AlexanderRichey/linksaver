@@ -2,7 +2,7 @@
 <div class="pb2">
   <div class="pb1">
     <label for="{{ name|lower }}">
-      <small>{{ name|title }}</small>
+      <small>{% if name == "URL" %}{{ name }}{% else %}{{ name|title }}{% endif %}</small>
     </label>
   </div>
   <div class="mb1">

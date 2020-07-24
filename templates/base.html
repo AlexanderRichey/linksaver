@@ -62,6 +62,31 @@
         min-height: calc(100vh - 16rem);
       }
 
+      @media (max-width: 1024px) {
+        body {
+          padding: 0 1rem;
+        }
+        
+        header {
+          height: 4rem;
+          margin-bottom: 1rem;
+        }
+
+        footer {
+          margin-top: 1rem;
+          height: 4rem;
+          font-size: 1rem;
+        }
+
+        footer p small {
+          font-size: 0.6rem;
+        }
+
+        main {
+          min-height: calc(100vh - 10rem);
+        }
+      }
+
       code {
         font-family: var(--monospace);
       }
@@ -354,6 +379,41 @@
               element: this.editorTarget,
               autofocus: true,
               spellChecker: false,
+              status: false,
+              toolbar: [
+                {
+                  name: "bold",
+                  action: SimpleMDE.toggleBold,
+                  className: "fa fa-bold",
+                  title: "Bold",
+                },
+                {
+                  name: "italic",
+                  action: SimpleMDE.toggleItalic,
+                  className: "fa fa-italic",
+                  title: "Italic",
+                },
+                {
+                  name: "quote",
+                  action: SimpleMDE.toggleBlockquote,
+                  className: "fa fa-quote-left",
+                  title: "Quote",
+                },
+                "|",
+                {
+                  name: "link",
+                  action: SimpleMDE.drawLink,
+                  className: "fa fa-link",
+                  title: "Link",
+                },
+                "|",
+                {
+                  name: "preview",
+                  action: SimpleMDE.togglePreview,
+                  className: "fa fa-eye no-disable",
+                  title: "Preview",
+                },
+              ],
             });
           }
 

@@ -53,13 +53,13 @@
           error=favicon) }}
     {% endif %}
 
-    <hr class="mb3 mt2" />
-
+    <div class="mt2">
     {% if link and link.body %}
       {{ forms.textarea('body', autofocus='true', value=link.body, error=body) }}
     {% else %}
       {{ forms.textarea('body', autofocus='true', error=body) }}
     {% endif %}
+    </div>
    
     <div class="mt3">
       <button class="right btn-large" type="submit">Save</button>
