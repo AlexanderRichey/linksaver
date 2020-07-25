@@ -124,10 +124,13 @@ class Item(BaseModel):
         return cls.construct(**Item.clean_item(item))
 
     @staticmethod
-    def get_by_user(user: User, page: int = 0):
+    def get_by_user(user: User, page: int = 0, filter = None):
+        base_filter = {"email": user.email}
+        if filter == TYPE_NOTE or filter == TYPE_LINK:
+            base_filter["type"] = filter
         items = []
         for item in db.items.find(
-            filter={"email": user.email},
+            filter=base_filter,
             skip=page * PAGE_SIZE,
             limit=PAGE_SIZE,
         ).sort(

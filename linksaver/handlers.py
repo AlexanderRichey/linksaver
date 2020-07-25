@@ -29,7 +29,9 @@ async def home(request):
             page = 0
         page = abs(page)
 
-        items = Item.get_by_user(request.user, page)
+        filter = request.query_params.get("filter", None)
+
+        items = Item.get_by_user(request.user, page, filter)
         days = collections.defaultdict(list)
         for item in items:
             days[item.created_at.strftime("%A %-d %B")].append(item)
