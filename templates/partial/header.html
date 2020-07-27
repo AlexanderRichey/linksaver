@@ -3,16 +3,33 @@
     <h1 class="m0 p0 regular">&#x1F517</h1>
   </div>
   <div>
-    <nav class="m0 p0 flex">
+    <nav role="navigation" class="m0 p0 flex">
       {% if user.is_authenticated %}
-        <a class="btn-link-subtle mr1" href="/notes">
-          <span class="material-icons mr1">edit</span>
-          <span>New Note</span>
-        </a>
-        <a class="btn-link-subtle" href="/logout">
-          <span class="material-icons mr1">login</span>
-          <span>Logout</span>
-        </a>
+      <ul class="list-reset flex">
+        <li class="relative">
+          <a class="btn-link-subtle mr1" href="#" aria-haspopup="true">
+            <span class="material-icons mr1">filter_alt</span>
+            <span>Filter</span>
+          </a>
+          <ul class="dropdown list-reset" aria-label="submenu">
+            <li><a href="/?filter=note">Notes</a></li>
+            <li><a href="/?filter=link">Links</a></li>
+            <li><a class="nowrap" href="/">Remove Filter</a></li>
+          </ul>
+        </li>
+        <li>
+          <a class="btn-link-subtle mr1" href="/notes">
+            <span class="material-icons mr1">edit</span>
+            <span>New Note</span>
+          </a>
+        </li>
+        <li>
+          <a class="btn-link-subtle" href="/logout">
+            <span class="material-icons mr1">login</span>
+            <span>Logout</span>
+          </a>
+        </li>
+      </ul>
       {% else %}
       <p>
         <a href="/sessions">Login</a>
