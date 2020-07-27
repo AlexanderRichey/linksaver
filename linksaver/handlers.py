@@ -106,7 +106,7 @@ async def oauth(request):
 
 async def user_form(request):
     if request.user.is_authenticated:
-        return RedirectResponse(url="/")
+        return RedirectResponse(url="/", status_code=302)
     context = {"request": request, "user": request.user}
     return templates.TemplateResponse("signup.html", context)
 
@@ -137,7 +137,7 @@ async def create_user(request):
     user = User(email=user_form.email, password_digest=password_digest.decode("utf-8"))
     user.put()
 
-    resp = RedirectResponse(url="/")
+    resp = RedirectResponse(url="/", status_code=302)
     resp.set_cookie("session_id", user.session_id, max_age=31556952, httponly=True)
 
     return resp
@@ -145,7 +145,7 @@ async def create_user(request):
 
 async def session_form(request):
     if request.user.is_authenticated:
-        return RedirectResponse(url="/")
+        return RedirectResponse(url="/", status_code=302)
     context = {"request": request, "user": request.user}
     return templates.TemplateResponse("login.html", context)
 
@@ -174,7 +174,7 @@ async def create_session(request):
         bytes(user_form.password, encoding="utf8"),
         bytes(user.password_digest, encoding="utf8"),
     ):
-        resp = RedirectResponse(url="/")
+        resp = RedirectResponse(url="/", status_code=302)
         resp.set_cookie("session_id", user.session_id, max_age=31556952, httponly=True)
         return resp
 
@@ -185,7 +185,7 @@ async def delete_session(request):
     if request.user.is_authenticated:
         request.user.roll_session()
         request.user.put()
-    resp = RedirectResponse(url="/")
+    resp = RedirectResponse(url="/", status_code=302)
     resp.delete_cookie("session_id")
     return resp
 

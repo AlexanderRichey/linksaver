@@ -102,6 +102,10 @@
       }
 
       input {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+
         width: calc(100% - 1rem);
         padding: 0.5rem;
         border: 0.08rem solid var(--gray);
@@ -165,7 +169,7 @@
         font-family: var(--sans);
       }
 
-      button:focus, a:focus, a:active, button:active, input:focus, input:active {
+      button:focus, a:focus, a:active, button:active {
         outline: none;
         border: none;
         box-shadow: 0 0 0 0.2rem var(--gray);

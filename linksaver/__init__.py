@@ -28,7 +28,7 @@ app = Starlette(
     on_shutdown=[client.close],
     middleware=[Middleware(AuthenticationMiddleware, backend=CookieAuthBackend())],
     routes=[
-        Route("/", home, methods=["GET", "POST"]),
+        Route("/", home, methods=["GET"]),
         Route("/users", user_form, methods=["GET"]),
         Route("/users", create_user, methods=["POST"]),
         Route("/sessions", session_form, methods=["GET"]),

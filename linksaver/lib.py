@@ -67,7 +67,7 @@ class HandlerFactory:
         )
         item.put()
 
-        return RedirectResponse(url="/")
+        return RedirectResponse(url="/", status_code=302)
 
     @requires(["authenticated"])
     async def update_resource(self, request):
@@ -96,9 +96,9 @@ class HandlerFactory:
 
         resource.put()
 
-        return RedirectResponse(url="/")
+        return RedirectResponse(url="/", status_code=302)
 
     def delete_resource(self, request):
         resource = self.get_resource(request)
         resource.delete()
-        return RedirectResponse(url="/")
+        return RedirectResponse(url="/", status_code=302)
