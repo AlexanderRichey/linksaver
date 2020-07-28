@@ -1,11 +1,19 @@
 <header class="flex items-center justify-between">
   <div>
-    <h1 class="m0 p0 regular">&#x1F517</h1>
+    <a href="/">
+      <h1 class="m0 p0 regular">&#x1F517</h1>
+    </a>
   </div>
   <div>
     <nav role="navigation" class="m0 p0 flex">
       {% if user.is_authenticated %}
       <ul class="list-reset flex">
+        <li>
+          <a class="btn-link-subtle mr1" href="/search">
+            <span class="material-icons mr1">search</span>
+            <span>Search</span>
+          </a>
+        </li>
         <li class="relative">
           <a class="btn-link-subtle mr1" href="#" aria-haspopup="true">
             <span class="material-icons mr1">filter_alt</span>

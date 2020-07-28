@@ -124,10 +124,12 @@ class Item(BaseModel):
         return cls.construct(**Item.clean_item(item))
 
     @staticmethod
-    def get_by_user(user: User, page: int = 0, filter = None):
+    def get_by_user(user: User, page: int = 0, filter: str = "", search: str = ""):
         base_filter = {"email": user.email}
         if filter == TYPE_NOTE or filter == TYPE_LINK:
             base_filter["type"] = filter
+        if len(search) > 0:
+            base_filter["$text"] = {"$search": search}
         items = []
         for item in db.items.find(
             filter=base_filter,

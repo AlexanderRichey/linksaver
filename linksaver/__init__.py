@@ -17,6 +17,7 @@ from .handlers import (
     notes,
     oauth_form,
     oauth,
+    search,
     api_create_link,
 )
 from .auth import CookieAuthBackend
@@ -46,6 +47,7 @@ app = Starlette(
         Route("/notes/{id}", notes.render_form, methods=["GET"]),
         Route("/notes/{id}/update", notes.update_resource, methods=["POST"]),
         Route("/notes/{id}/delete", notes.delete_resource, methods=["POST"]),
+        Route("/search", search, methods=["GET"]),
         Route("/api/links", api_create_link, methods=["POST", "OPTIONS"]),
         Mount("/", app=StaticFiles(directory="static")),
     ],

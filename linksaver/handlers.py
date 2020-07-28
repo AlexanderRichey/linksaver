@@ -29,9 +29,10 @@ async def home(request):
             page = 0
         page = abs(page)
 
-        filter = request.query_params.get("filter", None)
+        filter = request.query_params.get("filter", "")
+        search = request.query_params.get("search", "")
 
-        items = Item.get_by_user(request.user, page, filter)
+        items = Item.get_by_user(request.user, page, filter, search)
         days = collections.defaultdict(list)
         for item in items:
             days[item.created_at.strftime("%A %-d %B")].append(item)
@@ -188,6 +189,11 @@ async def delete_session(request):
     resp = RedirectResponse(url="/", status_code=302)
     resp.delete_cookie("session_id")
     return resp
+
+
+async def search(request):
+    context = {"request": request, "user": request.user}
+    return templates.TemplateResponse("search.html", context)
 
 
 async def api_create_link(request):

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% import 'partial/forms.html' as forms %}
+
+{% block title %}Linksaver | Search{% endblock %}
+
+{% block content %}
+<div class="max-width-2 mx-auto mt4">
+  <form action="/" method="GET">
+    {{ forms.input('search', error=search, autofocus='true') }}
+    <button class="right mt1 btn-large" type="submit">Submit</button>
+  </form>
+</div>
+{% endblock %}
