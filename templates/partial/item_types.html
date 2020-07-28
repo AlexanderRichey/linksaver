@@ -26,10 +26,28 @@
           </form>
         </div>
         <div>
-          <a class="btn-link-subtle" href="/notes/{{ item.id }}">
+          <a class="btn-link-subtle mr1" href="/notes/{{ item.id }}">
             <span class="material-icons mr1">edit</span>
             <span>Edit</span>
           </a>
+        </div>
+        <div>
+          <form
+            {% if item.is_pin %}
+            action="/notes/{{ item.id }}/unpin"
+            {% else %}
+            action="/notes/{{ item.id }}/pin"
+            {% endif %}
+            method="POST">
+            <button type="submit" class="btn-subtle">
+              <span class="material-icons mr1">push_pin</span>
+              {% if item.is_pin %}
+              <span>Unpin</span>
+              {% else %}
+              <span>Pin</span>
+              {% endif %}
+            </button>
+          </form>
         </div>
       </div>
     </div>
@@ -86,11 +104,30 @@
           </form>
         </div>
         <div>
-          <a class="btn-link-subtle" href="/links/{{ item.id }}">
+          <a class="btn-link-subtle mr1" href="/links/{{ item.id }}">
             <span class="material-icons mr1">edit</span>
             <span>Edit</span>
           </a>
         </div>
+        <div>
+          <form
+            {% if item.is_pin %}
+            action="/links/{{ item.id }}/unpin"
+            {% else %}
+            action="/links/{{ item.id }}/pin"
+            {% endif %}
+            method="POST">
+            <button type="submit" class="btn-subtle">
+              <span class="material-icons mr1">push_pin</span>
+              {% if item.is_pin %}
+              <span>Unpin</span>
+              {% else %}
+              <span>Pin</span>
+              {% endif %}
+            </button>
+          </form>
+        </div>
+
       </div>
 
     </div>

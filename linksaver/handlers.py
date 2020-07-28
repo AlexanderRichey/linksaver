@@ -37,6 +37,10 @@ async def home(request):
         for item in items:
             days[item.created_at.strftime("%A %-d %B")].append(item)
         context["days"] = days
+
+        pins = Item.get_pins_by_user(request.user)
+        context["pins"] = pins
+
         context["next_page"] = abs(page + 1)
         context["prev_page"] = max(page - 1, 0)
     return templates.TemplateResponse("index.html", context)

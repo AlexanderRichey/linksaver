@@ -52,18 +52,18 @@ class HandlerFactory:
         clean_form_data = {k: v for k, v in form_data.items() if v}
 
         try:
-            note_form = self.resource_form(**dict(clean_form_data))
+            form = self.resource_form(**dict(clean_form_data))
         except ValidationError as e:
             for error in e.errors():
                 context[error["loc"][0]] = error["msg"]
             context[self.resource_type] = clean_form_data
             return templates.TemplateResponse(self.template, context, 400)
 
-        if not csrf_signer.validate(note_form.csrf):
+        if not csrf_signer.validate(form.csrf):
             raise HTTPException(401)
 
         item = self.resource(
-            email=request.user.email, type=self.resource_type, **dict(note_form)
+            email=request.user.email, type=self.resource_type, **dict(form)
         )
         item.put()
 
@@ -79,7 +79,7 @@ class HandlerFactory:
 
         try:
             form_data = await request.form()
-            note_form = self.resource_form(
+            form = self.resource_form(
                 **dict({k: v for k, v in form_data.items() if v})
             )
         except ValidationError as e:
@@ -87,15 +87,37 @@ class HandlerFactory:
                 context[error["loc"][0]] = error["msg"]
             return templates.TemplateResponse(self.template, context, 400)
 
-        if not csrf_signer.validate(note_form.csrf):
+        if not csrf_signer.validate(form.csrf):
             raise HTTPException(401)
 
-        for k, v in dict(note_form).items():
+        for k, v in dict(form).items():
             if hasattr(resource, k):
                 setattr(resource, k, v)
 
         resource.put()
 
+        return RedirectResponse(url="/", status_code=302)
+
+    @requires(["authenticated"])
+    async def pin_resource(self, request):
+        resource = self.get_resource(request)
+        context = {
+            "request": request,
+            "user": request.user,
+        }
+        resource.is_pin = True
+        resource.put()
+        return RedirectResponse(url="/", status_code=302)
+
+    @requires(["authenticated"])
+    async def unpin_resource(self, request):
+        resource = self.get_resource(request)
+        context = {
+            "request": request,
+            "user": request.user,
+        }
+        resource.is_pin = False
+        resource.put()
         return RedirectResponse(url="/", status_code=302)
 
     def delete_resource(self, request):

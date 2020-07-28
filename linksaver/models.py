@@ -93,6 +93,7 @@ class Item(BaseModel):
     body: Optional[str] = None
     created_at: datetime = Field(default_factory=datetime.now)
     updated_at: datetime = Field(default_factory=datetime.now)
+    is_pin: bool = False
 
     @validator("url")
     def url_not_none_for_links(cls, v, values):
@@ -138,6 +139,13 @@ class Item(BaseModel):
         ).sort(
             "created_at", pymongo.DESCENDING
         ):
+            items.append(Item.construct(**Item.clean_item(item)))
+        return items
+
+    @staticmethod
+    def get_pins_by_user(user: User):
+        items = []
+        for item in db.items.find({"email": user.email, "is_pin": True}):
             items.append(Item.construct(**Item.clean_item(item)))
         return items
 
