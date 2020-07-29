@@ -46,6 +46,7 @@ class HandlerFactory:
         context = {
             "request": request,
             "user": request.user,
+            "csrf": csrf_signer.sign(request.user.session_id).decode("utf-8"),
         }
 
         form_data = await request.form()
@@ -75,6 +76,7 @@ class HandlerFactory:
         context = {
             "request": request,
             "user": request.user,
+            "csrf": csrf_signer.sign(request.user.session_id).decode("utf-8"),
         }
 
         try:

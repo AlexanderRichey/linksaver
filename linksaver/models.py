@@ -1,5 +1,5 @@
 from secrets import token_urlsafe
-from typing import Optional, Literal
+from typing import Optional, Literal, List
 from datetime import datetime
 from pydantic import BaseModel, EmailStr, HttpUrl, validator, Field
 from starlette.authentication import BaseUser
@@ -94,6 +94,7 @@ class Item(BaseModel):
     created_at: datetime = Field(default_factory=datetime.now)
     updated_at: datetime = Field(default_factory=datetime.now)
     is_pin: bool = False
+    tags: List[str] = []
 
     @validator("url")
     def url_not_none_for_links(cls, v, values):

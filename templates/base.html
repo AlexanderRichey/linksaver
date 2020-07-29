@@ -490,6 +490,27 @@
           }
         })
 
+        document.addEventListener("submit", e => {
+          e.preventDefault()
+          const xhr = new XMLHttpRequest()
+          const fd = new FormData(e.target)
+          if (e.target.method.toUpperCase() === "GET") {
+            const query = new URLSearchParams(fd).toString()
+            xhr.open(e.target.method, "/?" + query)
+          } else {
+            xhr.open(e.target.method, e.target.getAttribute("action"))
+          }
+          xhr.send(fd)
+          xhr.onload = (e) => {
+            const domparser = new DOMParser()
+            const doc = domparser.parseFromString(e.target.response, "text/html")
+            if (e.currentTarget.status < 300) {
+              window.history.pushState("", doc.title, "/")
+              window.document.title = doc.title
+            }
+            document.body = doc.body
+          }
+        })
       })()
     </script>
   </head>

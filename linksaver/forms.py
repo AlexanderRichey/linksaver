@@ -1,5 +1,5 @@
 from pydantic import BaseModel, EmailStr, Field, HttpUrl, validator
-from typing import Optional
+from typing import Optional, List
 from datetime import datetime
 
 
@@ -17,6 +17,7 @@ class UserForm(BaseModel):
 class NoteForm(BaseModel):
     body: str
     title: str = ""
+    tags: List[str] = []
     csrf: str
 
     @validator("body")
@@ -40,6 +41,7 @@ class LinkForm(BaseModel):
     body: Optional[str] = None
     url: HttpUrl
     favicon: Optional[HttpUrl] = None
+    tags: List[str] = []
     csrf: str
 
 
