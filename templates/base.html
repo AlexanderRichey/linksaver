@@ -501,7 +501,6 @@
           } else {
             xhr.open(e.target.method, e.target.getAttribute("action"))
           }
-          xhr.send(fd)
           xhr.onload = (e) => {
             const domparser = new DOMParser()
             const doc = domparser.parseFromString(e.target.response, "text/html")
@@ -511,6 +510,7 @@
             }
             document.body = doc.body
           }
+          xhr.send(fd)
         })
       })()
     </script>
