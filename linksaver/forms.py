@@ -1,4 +1,4 @@
-from pydantic import BaseModel, EmailStr, Field, HttpUrl, validator
+from pydantic import BaseModel, EmailStr, Field, HttpUrl, validator, root_validator
 from typing import Optional, List
 from datetime import datetime
 
@@ -35,6 +35,12 @@ class NoteForm(BaseModel):
         timestamp = datetime.now().strftime("%-I:%M %p")
         return f"Note @ {timestamp}"
 
+    @root_validator(pre=True)
+    def derive_tags(cls, values):
+        tags = values.get("tags", "")
+        values["tags"] = [t.strip().lower() for t in tags.split(",") if t]
+        return values
+
 
 class LinkForm(BaseModel):
     title: Optional[str] = None
@@ -43,6 +49,12 @@ class LinkForm(BaseModel):
     favicon: Optional[HttpUrl] = None
     tags: List[str] = []
     csrf: str
+
+    @root_validator(pre=True)
+    def derive_tags(cls, values):
+        tags = values.get("tags", "")
+        values["tags"] = [t.strip().lower() for t in tags.split(",") if t]
+        return values
 
 
 class ApiLinkForm(BaseModel):

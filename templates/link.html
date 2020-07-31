@@ -10,10 +10,11 @@
 {% endblock %}
 
 {% block content %}
-<div class="max-width-3 mx-auto">
-  <form action="{{ action }}" method="POST">
+<div class="max-width-4 mx-auto">
+  <form class="clearfix mxn2" action="{{ action }}" method="POST">
     <input type="hidden" name="csrf" value="{{ csrf }}">
 
+    <div class="lg-col lg-col-4 px2">
     {% if link and link.title %}
       {{ forms.input(
           'title',
@@ -53,18 +54,33 @@
           error=favicon) }}
     {% endif %}
 
-    <div class="mt2">
-    {% if link and link.body %}
-      {{ forms.textarea('body', autofocus='true', value=link.body, error=body) }}
+    {% if link and link.tags %}
+      {{ forms.input(
+          'Tags',
+          type='text',
+          value=link.tags|join(", "),
+          error=tags) }}
     {% else %}
-      {{ forms.textarea('body', autofocus='true', error=body) }}
+      {{ forms.input(
+          'Tags',
+          type='text',
+          error=tags) }}
     {% endif %}
     </div>
-   
-    <div class="mt3">
-      <button class="right btn-large" type="submit">Save</button>
-      <a href="/" class="right mx2 btn-large gray">Cancel</a>
+
+    <div class="lg-col lg-col-8 px2">
+      {% if link and link.body %}
+        {{ forms.textarea('body', autofocus='true', value=link.body, error=body) }}
+      {% else %}
+        {{ forms.textarea('body', autofocus='true', error=body) }}
+      {% endif %}
+
+      <div class="mt3">
+        <button class="right btn-large" type="submit">Save</button>
+        <a href="/" class="right mx2 btn-large gray">Cancel</a>
+      </div>
     </div>
+   
   </form>
 </div>
 {% endblock %}

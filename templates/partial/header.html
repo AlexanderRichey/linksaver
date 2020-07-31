@@ -20,9 +20,15 @@
             <span>Filter</span>
           </a>
           <ul class="dropdown list-reset" aria-label="submenu">
-            <li><a href="/?filter=note">Notes</a></li>
-            <li><a href="/?filter=link">Links</a></li>
-            <li><a class="nowrap" href="/">Remove Filter</a></li>
+            <li class="nowrap flex"><span class="filter-bullet">&#x1F4DD</span><a href="/?filter=note">Notes</a></li>
+            <li class="nowrap flex"><span class="filter-bullet">&#x1F30F</span><a href="/?filter=link">Links</a></li>
+            <li class="nowrap flex"><span class="filter-bullet">&#x1F6AB</span><a href="/">Remove Filter</a></li>
+            {% if user.get_tags()|length > 0 %}
+              <li></li>
+              {% for tag in user.get_tags() %}
+              <li class="nowrap flex"><span class="filter-bullet">&#x0023</span><a href="/tags/{{ tag|lower }}">{{ tag|title }}</a></li>
+              {% endfor %}
+            {% endif %}
           </ul>
         </li>
         <li>

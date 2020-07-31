@@ -20,6 +20,14 @@
       {{ forms.textarea('body', autofocus='true', error=body) }}
     {% endif %}
   
+    <div class="mt3">
+    {% if note %}
+      {{ forms.input('tags', value=note.tags|join(", "), error=tags)}}
+    {% else %}
+      {{ forms.input('tags', error=tags)}}
+    {% endif %}
+    </div>
+
     <div class="mt3 flex justify-end">
       <a href="/" class="mr2 btn-large gray">Cancel</a>
       <button class="btn-large" type="submit">Save</button>

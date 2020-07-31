@@ -32,6 +32,7 @@ class User(BaseModel, BaseUser):
     password_digest: str
     session_id: str = token_urlsafe(16)
     token: str = token_urlsafe(16)
+    tags: List[tuple] = []
     created_at: datetime = Field(default_factory=datetime.now)
     updated_at: datetime = Field(default_factory=datetime.now)
 
@@ -80,8 +81,26 @@ class User(BaseModel, BaseUser):
     def roll_session(self):
         self.session_id = token_urlsafe(16)
 
+    def get_tags(self) -> List[str]:
+        return [t[0] for t in self.tags]
 
-PAGE_SIZE = 80
+    def add_tag(self, tag_name: str):
+        for tag in self.tags:
+            if tag[0] == tag_name:
+                tag[1] += 1
+                return
+        self.tags.append((tag_name, 1,))
+
+    def remove_tag(self, tag_name: str):
+        for i, tag in enumerate(self.tags):
+            if tag[0] == tag_name:
+                tag[1] -= 1
+                if tag[1] <= 0:
+                    self.tags.pop(i)
+                return
+
+
+PAGE_SIZE = 60
 
 class Item(BaseModel):
     id: Optional[str]
@@ -126,12 +145,14 @@ class Item(BaseModel):
         return cls.construct(**Item.clean_item(item))
 
     @staticmethod
-    def get_by_user(user: User, page: int = 0, filter: str = "", search: str = ""):
+    def get_by_user(user: User, page: int = 0, filter: str = "", search: str = "", tag: str = ""):
         base_filter = {"email": user.email}
         if filter == TYPE_NOTE or filter == TYPE_LINK:
             base_filter["type"] = filter
         if len(search) > 0:
             base_filter["$text"] = {"$search": search}
+        if len(tag) > 0:
+            base_filter["tags"] = tag.lower()
         items = []
         for item in db.items.find(
             filter=base_filter,

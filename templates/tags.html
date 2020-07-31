@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% import 'partial/item_types.html' as itemtypes %}
+
+{% block title %}Linksaver| {{ tag }}{% endblock %}
+
+{% block content %}
+  <div class="max-width-3 mx-auto">
+    <section>
+      <h3>{{ tag }}</h3>
+      <ul class="list-reset">
+        {% for item in items %}
+          {% if item.type == 'note' %}
+            {{ itemtypes.note(item) }} 
+          {% else %}
+            {{ itemtypes.link(item) }}
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </section>
+  </div>
+{% endblock %}

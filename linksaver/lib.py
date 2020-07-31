@@ -67,6 +67,10 @@ class HandlerFactory:
             email=request.user.email, type=self.resource_type, **dict(form)
         )
         item.put()
+        
+        for tag in form.tags:
+            request.user.add_tag(tag)
+        request.user.put()
 
         return RedirectResponse(url="/", status_code=302)
 
@@ -87,16 +91,27 @@ class HandlerFactory:
         except ValidationError as e:
             for error in e.errors():
                 context[error["loc"][0]] = error["msg"]
+            context[self.resource_type] = clean_form_data
             return templates.TemplateResponse(self.template, context, 400)
 
         if not csrf_signer.validate(form.csrf):
             raise HTTPException(401)
 
+        original_tags = [t for t in resource.tags]
+
         for k, v in dict(form).items():
             if hasattr(resource, k):
                 setattr(resource, k, v)
 
+        new_tags = [t for t in form.tags if t not in original_tags]
+        del_tags = [t for t in original_tags if t not in form.tags]
+        for new_tag in new_tags:
+            request.user.add_tag(new_tag)
+        for del_tag in del_tags:
+            request.user.remove_tag(del_tag)
+
         resource.put()
+        request.user.put()
 
         return RedirectResponse(url="/", status_code=302)
 
@@ -124,5 +139,8 @@ class HandlerFactory:
 
     def delete_resource(self, request):
         resource = self.get_resource(request)
+        for tag in [t for t in resource.tags]:
+            request.user.remove_tag(tag)
         resource.delete()
+        request.user.put()
         return RedirectResponse(url="/", status_code=302)

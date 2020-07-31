@@ -15,20 +15,21 @@ from .lib import HandlerFactory
 
 
 notes = HandlerFactory(TYPE_NOTE, Item, NoteForm, "note.html")
-
 links = HandlerFactory(TYPE_LINK, Item, LinkForm, "link.html")
+
+def _get_page(request) -> int:
+    page = request.query_params.get("page", 0)
+    try:
+        page = int(page)
+    except ValueError:
+        page = 0
+    return abs(page)
 
 
 async def home(request):
     context = {"request": request, "user": request.user}
     if request.user.is_authenticated:
-        page = request.query_params.get("page", 0)
-        try:
-            page = int(page)
-        except ValueError:
-            page = 0
-        page = abs(page)
-
+        page = _get_page(request)
         filter = request.query_params.get("filter", "")
         search = request.query_params.get("search", "")
 
@@ -44,6 +45,19 @@ async def home(request):
         context["next_page"] = abs(page + 1)
         context["prev_page"] = max(page - 1, 0)
     return templates.TemplateResponse("index.html", context)
+
+
+@requires(["authenticated"])
+async def tags(request):
+    context = {"request": request, "user": request.user}
+    page = _get_page(request)
+    tag = request.path_params.get("tag")
+    items = Item.get_by_user(request.user, page=page, tag=tag)
+    context["items"] = items
+    context["next_page"] = abs(page + 1)
+    context["prev_page"] = max(page - 1, 0)
+    context["tag"] = tag.title()
+    return templates.TemplateResponse("tags.html", context)
 
 
 async def oauth_form(request):
