@@ -26,6 +26,10 @@ class AnonUser(BaseUser):
     def identity(self) -> str:
         return "unknown"
 
+    @property
+    def token(self) -> str:
+        return ""
+
 
 class User(BaseModel, BaseUser):
     email: EmailStr
@@ -52,7 +56,7 @@ class User(BaseModel, BaseUser):
 
     @classmethod
     def get_by_email(cls, email):
-        user = db.users.find_one({"email": email})
+        user = db.users.find_one({"email": email.lower()})
         if not user:
             return None
         return cls.construct(**user)

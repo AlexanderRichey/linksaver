@@ -13,6 +13,12 @@ class UserForm(BaseModel):
             raise ValueError("password must be at least 6 characters long")
         return v
 
+    @root_validator(pre=True)
+    def lower_email(cls, values):
+        email = values.get("email", "")
+        values["email"] = email.lower()
+        return values
+
 
 class NoteForm(BaseModel):
     body: str
