@@ -63,11 +63,8 @@ async def tags(request):
 
 
 async def oauth_form(request):
-    client_id = request.query_params.get("client_id")
     redirect_uri = request.query_params.get("redirect_uri")
 
-    if not client_id in ["ff", "chromium"]:
-        raise HTTPException(404)
     if not redirect_uri:
         raise HTTPException(404)
 
@@ -78,18 +75,15 @@ async def oauth_form(request):
         "user": request.user,
         "heading_text": "Login",
         "page_title": "Login",
-        "action": f"/oauth?client_id={client_id}&redirect_uri={urllib.parse.quote(redirect_uri)}",
+        "action": f"/oauth?redirect_uri={urllib.parse.quote(redirect_uri)}",
         "button_text": "Login",
     }
     return templates.TemplateResponse("auth.html", context)
 
 
 async def oauth(request):
-    client_id = request.query_params.get("client_id")
     redirect_uri = request.query_params.get("redirect_uri")
 
-    if not client_id in ["ff", "chromium"]:
-        raise HTTPException(404)
     if not redirect_uri:
         raise HTTPException(404)
 
@@ -98,7 +92,7 @@ async def oauth(request):
         "user": request.user,
         "heading_text": "Login",
         "page_title": "Login",
-        "action": f"/oauth?client_id={client_id}&redirect_uri={urllib.parse.quote(redirect_uri)}",
+        "action": f"/oauth?redirect_uri={urllib.parse.quote(redirect_uri)}",
         "button_text": "Login",
         "password": "Invalid credentials",
     }

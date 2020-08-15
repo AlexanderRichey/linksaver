@@ -30,8 +30,7 @@ clearButton.addEventListener("click", () => {
 
 authenticateButton.addEventListener("click", () => {
   const redirectURL = encodeURIComponent(chrome.identity.getRedirectURL());
-  const clientId = encodeURIComponent("ff");
-  const authURL = `https://linksaver.onrender.com/oauth?client_id=${clientId}&redirect_uri=${redirectURL}`;
+  const authURL = `https://linksaver.io/oauth?redirect_uri=${redirectURL}`;
 
   return chrome.identity.launchWebAuthFlow(
     {
