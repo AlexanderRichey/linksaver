@@ -6,6 +6,7 @@ from pydantic import BaseModel, EmailStr, ValidationError, Field
 from typing import Pattern
 import collections
 import bcrypt
+import urllib
 
 from .templates import templates
 from .models import User, Item, TYPE_NOTE, TYPE_LINK
@@ -16,6 +17,7 @@ from .lib import HandlerFactory
 
 notes = HandlerFactory(TYPE_NOTE, Item, NoteForm, "note.html")
 links = HandlerFactory(TYPE_LINK, Item, LinkForm, "link.html")
+
 
 def _get_page(request) -> int:
     page = request.query_params.get("page", 0)
@@ -76,7 +78,7 @@ async def oauth_form(request):
         "user": request.user,
         "heading_text": "Login",
         "page_title": "Login",
-        "action": f"/oauth?client_id={client_id}&redirect_uri={redirect_uri}",
+        "action": f"/oauth?client_id={client_id}&redirect_uri={urllib.parse.quote(redirect_uri)}",
         "button_text": "Login",
     }
     return templates.TemplateResponse("auth.html", context)
@@ -96,7 +98,7 @@ async def oauth(request):
         "user": request.user,
         "heading_text": "Login",
         "page_title": "Login",
-        "action": f"/oauth?client_id={client_id}&redirect_uri={redirect_uri}",
+        "action": f"/oauth?client_id={client_id}&redirect_uri={urllib.parse.quote(redirect_uri)}",
         "button_text": "Login",
         "password": "Invalid credentials",
     }
@@ -116,6 +118,7 @@ async def oauth(request):
         bytes(user_form.password, encoding="utf8"),
         bytes(user.password_digest, encoding="utf8"),
     ):
+        print(f"{redirect_uri}?token={user.token}")
         return RedirectResponse(
             url=f"{redirect_uri}?token={user.token}", status_code=302
         )
