@@ -1,0 +1,17 @@
+{% extends 'lightbase.html' %}
+{% import 'partial/forms.html' as forms %}
+
+{% block title %}Linksaver | {{ page_title }}{% endblock %}
+
+{% block content %}
+<div class="max-width-2 mx-auto">
+  <h2 class="h2 mb3">{{ heading_text }}</h2>
+  <form action="{{ action }}" method="POST">
+    {{ forms.input('email', error=email, autofocus='true') }}
+   
+    {{ forms.input('password', type='password', error=password) }}
+
+    <button class="right mt1 btn-large" type="submit">{{ button_text }}</button>
+  </form>
+</div>
+{% endblock %}

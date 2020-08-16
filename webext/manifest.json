@@ -2,9 +2,9 @@
   "manifest_version": 2,
   "name": "Linksaver",
   "short_name": "lsvr",
-  "version": "0.1",
+  "version": "0.2",
   "description": "Save your links",
-  "homepage_url": "https://github.com/AlexanderRichey/linksaver",
+  "homepage_url": "https://linksaver.io",
   "permissions": ["identity", "storage", "activeTab"],
   "icons": {
     "16": "favicon-16x16.png",

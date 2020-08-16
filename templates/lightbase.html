@@ -12,18 +12,12 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <meta name="turbolinks-cache-control" content="no-cache">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-inter@3.12.0/inter.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basscss@8.1.0/css/basscss.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="/styles.css">
-    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/stimulus@1.1.1/dist/stimulus.umd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/turbolinks@5.2.0/dist/turbolinks.min.js"></script>
-    <script src="/scripts.js"></script>
   </head>
   <body>
-    <div data-token="{{ user.token }}"></div>
     {% include "partial/header.html" %}
     <main class="clearfix">
       {% block content %}
