@@ -78,7 +78,7 @@ async def oauth_form(request):
         "action": f"/oauth?redirect_uri={urllib.parse.quote(redirect_uri)}",
         "button_text": "Login",
     }
-    return templates.TemplateResponse("auth.html", context)
+    return templates.TemplateResponse("oauth.html", context)
 
 
 async def oauth(request):
@@ -106,7 +106,7 @@ async def oauth(request):
 
     user = User.get_by_email(user_form.email)
     if not user:
-        return templates.TemplateResponse("auth.html", context, 400)
+        return templates.TemplateResponse("oauth.html", context, 400)
 
     if bcrypt.checkpw(
         bytes(user_form.password, encoding="utf8"),
@@ -117,7 +117,7 @@ async def oauth(request):
             url=f"{redirect_uri}?token={user.token}", status_code=302
         )
 
-    return templates.TemplateResponse("auth.html", context, 400)
+    return templates.TemplateResponse("oauth.html", context, 400)
 
 
 async def user_form(request):
