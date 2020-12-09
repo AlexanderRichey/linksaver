@@ -44,6 +44,7 @@ async def home(request):
         pins = Item.get_pins_by_user(request.user)
         context["pins"] = pins
 
+        context["page"] = page
         context["next_page"] = abs(page + 1)
         context["prev_page"] = max(page - 1, 0)
     return templates.TemplateResponse("index.html", context)
@@ -240,7 +241,11 @@ async def api_create_link(request):
         for error in e.errors():
             errors[error["loc"][0]] = error["msg"]
         return JSONResponse(
-            errors, status_code=400, headers={"access-control-allow-origin": "*",}
+            errors,
+            status_code=400,
+            headers={
+                "access-control-allow-origin": "*",
+            },
         )
 
     item = Item(
@@ -253,5 +258,9 @@ async def api_create_link(request):
     item.put()
 
     return JSONResponse(
-        item.json(), status_code=201, headers={"access-control-allow-origin": "*",}
+        item.json(),
+        status_code=201,
+        headers={
+            "access-control-allow-origin": "*",
+        },
     )

@@ -8,8 +8,26 @@
       {% include 'partial/items_by_day.html'%}
     </div>
   {% else %}
-    <div class="max-width-3 mx-auto intro">
-      <img class="construction" src="construction.gif">
+    <div class="clearfix max-width-4 mx-auto intro">
+      <div class="right p2 mr1 md-hide sm-hide xs-hide">
+        <img src="link-zelda.png" class="noborder">
+      </div>
+      <div>
+        <h1>Save link(s)!</h1>
+        <p>With Linksaver, you can save links and take notes.</p>
+        <ul>
+          <li>Save links as you browse</li>
+          <li>Take notes</li>
+          <li>Tag links and notes</li>
+          <li>Search links and notes</li>
+          <li>Use markdown syntax</li>
+        </ul>
+        <p>This little app is backed by a <a href="https://www.mongodb.com/" target="_blank">Mongo</a> database and was written in Python with <a href="https://www.starlette.io/" target="_blank">Starlette</a>. See the <a href="https://github.com/AlexanderRichey/linksaver" target="_blank">repo on GitHub</a> for more info.</p>
+        <p class="py2">
+          <a href="/users" class="btn-large" style="text-decoration:none;color:white;">Sign up</a>
+        </p>
+        <p class="md-hide sm-hide xs-hide"><small>Link (to the right) is the hero of the <a href="https://en.wikipedia.org/wiki/The_Legend_of_Zelda" target="_blank">Zelda videogame series</a>, of course.</small></p>
+      </div>
     </div>
   {% endif %}
 {% endblock %}

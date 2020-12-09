@@ -404,16 +404,3 @@ ul li ul:focus {
 .intro a {
   text-decoration: underline;
 }
-
-.intro img {
-  border: 1px solid var(--gray);
-  border-radius: 0.2rem;
-  margin-bottom: 1rem;
-}
-
-.intro img.construction {
-  border: none;
-  margin: 0 auto 1.4rem auto;
-  display: flex;
-  max-width: 100%;
-}
