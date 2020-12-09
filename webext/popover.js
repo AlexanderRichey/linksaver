@@ -1,19 +1,19 @@
 const main = document.querySelector("main");
 
-chrome.tabs.query({ active: true, lastFocusedWindow: true }, tabs => {
+chrome.tabs.query({ active: true, lastFocusedWindow: true }, (tabs) => {
   const tab = tabs[0];
 
-  chrome.storage.local.get(["token"], store => {
-    if (!store.token) {
+  chrome.storage.local.get(["token", "endpoint"], (store) => {
+    if (!(store.token && store.endpoint)) {
       window.open(chrome.runtime.getURL("options.html"));
-      main.innerHTML = "<p>need to authenticate</p>";
+      main.innerHTML = "<p>You need to authenticate</p>";
       return;
     }
 
-    fetch("https://linksaver.io/api/links", {
+    fetch(`${store.endpoint}api/links`, {
       headers: new Headers({
         "Content-Type": "application/json",
-        Authorization: `Bearer ${store.token}`
+        Authorization: `Bearer ${store.token}`,
       }),
       method: "POST",
       mode: "cors",
@@ -23,10 +23,10 @@ chrome.tabs.query({ active: true, lastFocusedWindow: true }, tabs => {
         favicon:
           tab.favIconUrl && tab.favIconUrl.startsWith("https")
             ? tab.favIconUrl
-            : ""
-      })
+            : "",
+      }),
     })
-      .then(response => {
+      .then((response) => {
         if (response.status == 201) {
           main.innerHTML = "<p>&#x2705</p>";
         } else {

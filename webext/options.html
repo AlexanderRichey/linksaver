@@ -3,16 +3,50 @@
   <head>
     <meta charset="utf-8" />
     <title>Linksaver | Options</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
+    />
   </head>
   <body>
     <main>
-      <p id="message"></p>
-      <p>
-        <button id="clear">Logout</button>
-        <button id="authenticate">Login</button>
-      </p>
+      <header>
+        <h1>Linksaver Extension</h1>
+      </header>
+      <section>
+        <h2>Endpoint</h2>
+        <form id="endpoint-form">
+          <label for="endpoint">
+            URL:
+          </label>
+          <input
+            id="endpoint"
+            type="text"
+            style="width: 70%;"
+            placeholder="Example: https://my-container-service.hu8rd326665sm.us-east-2.cs.amazonlightsail.com"
+          />
+          <small>Remember to include the trailing slash in the URL.</small>
+          <br />
+          <br />
+          <button type="submit">Save</button>
+        </form>
+        <br />
+      </section>
+
+      <hr />
+
+      <section>
+        <h2>Authentication</h2>
+        <form id="auth-form">
+          <p id="message"></p>
+          <p>
+            <button id="clear">Logout</button>
+            <button id="authenticate">Login</button>
+          </p>
+        </form>
+      </section>
     </main>
-   <script src="options.js"></script>
- </body>
+    <script src="options.js"></script>
+  </body>
 </html>
