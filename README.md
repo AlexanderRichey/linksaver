@@ -1,4 +1,4 @@
-# Linksaver
+# 🔗 Linksaver
 
 Linksaver is a webapp that allows users to save links, take notes, and search, filter, and tag items.
 
@@ -12,13 +12,19 @@ docker-compose up
 
 That's it. Go to a web browser and open `localhost:8000`.
 
-## Deployment to Lightsail
+## Web extension
+
+1. Open your Chromium based browser and go to the extensions page. E.g., `brave://extensions`. You may have to enable developer mode if you haven't already.
+2. Click "Load unpacked" and choose the `webext` directory of this repository.
+3. Click the new link icon and enter your endpoint and login info. You can now start saving links. 🙂
+
+## Deploy to Lightsail
 
 Linksaver has three components that need to be setup: a Mongo database, the application container, and web extension.
 
 ### MongoDB
 
-1. Go to [Lightsail](https://lightsail.aws.amazon.com/ls/webapp/home) and create an instance with Ubuntu 20.04. Copy the contents of [mongo-cloud-init](mongo-cloud-init.sh) into the launch script field. This script installs and configures MongoDB.
+1. Go to [Lightsail](https://lightsail.aws.amazon.com/ls/webapp/home) and create an instance with Ubuntu 20.04. Copy the contents of [mongo-cloud-init](mongo-cloud-init.sh) into the launch script field. This script installs and configures MongoDB. **WARNING:** This script is fine for this demo, but it's not up to par for use in production.
 2. After the instance is ready, SSH into it and make sure that `mongo` was installed and is up by running `systemctl status mongod`.
 3. Note the *internal ip* of your instance.
 
@@ -41,9 +47,3 @@ aws lightsail push-container-image --service-name <the name you gave> --label li
     - Set an environment variable whose key is `DB_CONNECTION` and whose value is `mongodb://admin:admin@<private ip of your mongo instance>:27017/?authSource=admin`.
     - Open port `8000` with a protocol of `HTTP`.
 5. After your deployment is complete, go to your service's public URL and create an account for yourself.
-
-## Web extension
-
-1. Open your Chromium based browser and go to the extensions page. E.g., `brave://extensions`. You may have to enable developer mode if you haven't already.
-2. Click "Load unpacked" and choose the `webext` directory of this repository.
-3. Click the new link icon and login. You can now start saving links. 🙂
