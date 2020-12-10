@@ -47,9 +47,9 @@ endpointForm.addEventListener("submit", (e) => {
     return;
   }
 
-  chrome.storage.local.set({ endpoint: endpointVal }, () => {
+  chrome.storage.local.set({ endpoint: endpointVal, token: "" }, () => {
     populateEndpointValue(endpointVal);
-
+    showLogin();
     alert("Saved endpoint as " + endpointVal);
   });
 });

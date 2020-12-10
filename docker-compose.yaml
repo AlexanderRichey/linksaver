@@ -16,7 +16,7 @@ services:
     volumes:
       - ".:/var/www"
     ports:
-      - "8080:8000"
+      - "8000:8000"
     environment:
       - "DB_CONNECTION=mongo"
       - "DEBUG=1"

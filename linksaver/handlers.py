@@ -78,6 +78,7 @@ async def oauth_form(request):
         "page_title": "Login",
         "action": f"/oauth?redirect_uri={urllib.parse.quote(redirect_uri)}",
         "button_text": "Login",
+        "auth": {"email": "", "password": ""},
     }
     return templates.TemplateResponse("oauth.html", context)
 
@@ -96,9 +97,14 @@ async def oauth(request):
         "action": f"/oauth?redirect_uri={urllib.parse.quote(redirect_uri)}",
         "button_text": "Login",
         "password": "Invalid credentials",
+        "auth": {"email": "", "password": ""},
     }
+
+    form_data = await request.form()
+    clean_form_data = {k: v for k, v in form_data.items() if v}
+    context["auth"].update(clean_form_data)
+
     try:
-        form_data = await request.form()
         user_form = UserForm(**dict(form_data))
     except ValidationError as e:
         for error in e.errors():
@@ -124,7 +130,11 @@ async def oauth(request):
 async def user_form(request):
     if request.user.is_authenticated:
         return RedirectResponse(url="/", status_code=302)
-    context = {"request": request, "user": request.user}
+    context = {
+        "request": request,
+        "user": request.user,
+        "auth": {"email": "", "password": ""},
+    }
     return templates.TemplateResponse("signup.html", context)
 
 
@@ -133,10 +143,14 @@ async def create_user(request):
     context = {
         "request": request,
         "user": request.user,
+        "auth": {"email": "", "password": ""},
     }
 
+    form_data = await request.form()
+    clean_form_data = {k: v for k, v in form_data.items() if v}
+    context["auth"].update(clean_form_data)
+
     try:
-        form_data = await request.form()
         user_form = UserForm(**dict(form_data))
     except ValidationError as e:
         for error in e.errors():
@@ -163,7 +177,11 @@ async def create_user(request):
 async def session_form(request):
     if request.user.is_authenticated:
         return RedirectResponse(url="/", status_code=302)
-    context = {"request": request, "user": request.user}
+    context = {
+        "request": request,
+        "user": request.user,
+        "auth": {"email": "", "password": ""},
+    }
     return templates.TemplateResponse("login.html", context)
 
 
@@ -173,10 +191,14 @@ async def create_session(request):
         "request": request,
         "user": request.user,
         "password": "Invalid credentials",
+        "auth": {"email": "", "password": ""},
     }
 
+    form_data = await request.form()
+    clean_form_data = {k: v for k, v in form_data.items() if v}
+    context["auth"].update(clean_form_data)
+
     try:
-        form_data = await request.form()
         user_form = UserForm(**dict(form_data))
     except ValidationError as e:
         for error in e.errors():

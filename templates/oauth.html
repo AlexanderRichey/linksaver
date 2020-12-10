@@ -7,9 +7,9 @@
 <div class="max-width-2 mx-auto">
   <h2 class="h2 mb3">{{ heading_text }}</h2>
   <form action="{{ action }}" method="POST">
-    {{ forms.input('email', error=email, autofocus='true') }}
+    {{ forms.input('email', error=email, autofocus='true', value=auth.email) }}
    
-    {{ forms.input('password', type='password', error=password) }}
+    {{ forms.input('password', type='password', error=password, value=auth.password) }}
 
     <button class="right mt1 btn-large" type="submit">{{ button_text }}</button>
   </form>
