@@ -166,7 +166,7 @@ async def create_user(request):
         bytes(user_form.password, encoding="utf8"), bcrypt.gensalt()
     )
     user = User(email=user_form.email, password_digest=password_digest.decode("utf-8"))
-    user.put()
+    user.put(create=True)
 
     resp = RedirectResponse(url="/", status_code=302)
     resp.set_cookie("session_id", user.session_id, max_age=31556952, httponly=True)

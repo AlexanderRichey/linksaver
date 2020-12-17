@@ -73,9 +73,12 @@ class User(BaseModel, BaseUser):
     def identity(self) -> str:
         return self.email
 
-    def put(self):
+    def put(self, create=False):
         self.updated_at = datetime.now()
-        db.users.replace_one({"email": self.email}, dict(self), True)
+        if create:
+            db.users.insert_one(dict(self))
+        else:
+            db.users.replace_one({"email": self.email}, dict(self), True)
         return self
 
     def delete(self):
@@ -93,7 +96,12 @@ class User(BaseModel, BaseUser):
             if tag[0] == tag_name:
                 tag[1] += 1
                 return
-        self.tags.append((tag_name, 1,))
+        self.tags.append(
+            (
+                tag_name,
+                1,
+            )
+        )
 
     def remove_tag(self, tag_name: str):
         for i, tag in enumerate(self.tags):
@@ -105,6 +113,7 @@ class User(BaseModel, BaseUser):
 
 
 PAGE_SIZE = 60
+
 
 class Item(BaseModel):
     id: Optional[str]
@@ -149,7 +158,9 @@ class Item(BaseModel):
         return cls.construct(**Item.clean_item(item))
 
     @staticmethod
-    def get_by_user(user: User, page: int = 0, filter: str = "", search: str = "", tag: str = ""):
+    def get_by_user(
+        user: User, page: int = 0, filter: str = "", search: str = "", tag: str = ""
+    ):
         base_filter = {"email": user.email}
         if filter == TYPE_NOTE or filter == TYPE_LINK:
             base_filter["type"] = filter
@@ -162,9 +173,7 @@ class Item(BaseModel):
             filter=base_filter,
             skip=page * PAGE_SIZE,
             limit=PAGE_SIZE,
-        ).sort(
-            "created_at", pymongo.DESCENDING
-        ):
+        ).sort("created_at", pymongo.DESCENDING):
             items.append(Item.construct(**Item.clean_item(item)))
         return items
 
