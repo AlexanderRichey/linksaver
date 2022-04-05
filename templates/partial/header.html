@@ -1,7 +1,10 @@
 <header class="flex items-center justify-between">
   <div>
     <a class="no-underline" href="/">
-      <h1 class="m0 p0 regular">&#x1F517</h1>
+      <div class="flex justify-center items-center">
+        <img src="/robot-standing.jpg" style="max-width: 4rem;">
+        <h3>Sailbot Notes</h3>
+      </div>
     </a>
   </div>
   <div>
@@ -20,8 +23,6 @@
             <span>Filter</span>
           </a>
           <ul class="dropdown list-reset" aria-label="submenu">
-            <li class="nowrap flex"><span class="filter-bullet">&#x1F4DD</span><a href="/?filter=note">Notes</a></li>
-            <li class="nowrap flex"><span class="filter-bullet">&#x1F30F</span><a href="/?filter=link">Links</a></li>
             <li class="nowrap flex"><span class="filter-bullet">&#x1F6AB</span><a href="/">Remove Filter</a></li>
             {% if user.get_tags()|length > 0 %}
               <li></li>

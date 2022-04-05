@@ -47,6 +47,7 @@ async def home(request):
         context["page"] = page
         context["next_page"] = abs(page + 1)
         context["prev_page"] = max(page - 1, 0)
+        context["search"] = search
     return templates.TemplateResponse("index.html", context)
 
 

@@ -32,20 +32,23 @@
   {% endfor %}
 
   {% if days|length == 0 %}
-    {% if page == 0 %}
+    {% if page == 0 and search|length == 0 %}
     <div class="clearfix max-width-4 mx-auto intro">
       <div class="right p2 mr1 md-hide sm-hide xs-hide">
-        <img src="link-zelda.png" class="noborder">
+        <img src="robot-meditate.svg" class="noborder" style="
+          width: 200px;
+          padding-left: 50px;
+        ">
       </div>
       <div>
         <h1>Welcome</h1>
-        <p>You haven't added anything yet.</p>
-        <p>To get started, <a href="https://github.com/AlexanderRichey/linksaver#web-extension" target="_blank">setup the browser extension</a> or create a note by clicking the "New Note" button on the upper right.</p>
-        <p>Happy link saving!</p>
+        <p>You haven't added any notes yet.</p>
+        <p>To get started, create a note by clicking the "New Note" button on the upper right.</p>
+        <p>Happy note taking!</p>
       </div>
     </div>
     {% else %}
-      <p>There's nothing here</p>
+      <p>There's nothing here.</p>
     {% endif %}
   {% endif %}
 

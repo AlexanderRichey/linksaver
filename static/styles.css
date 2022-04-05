@@ -384,6 +384,10 @@ ul li ul:focus {
   font-size: 1.2rem;
 }
 
+.w-300 {
+  width: 300px;
+}
+
 .filter-bullet {
   width: 1.5rem;
 }

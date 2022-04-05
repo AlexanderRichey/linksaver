@@ -1,6 +1,6 @@
-# 🔗 Linksaver
+# Sailbot Notes
 
-Linksaver is a webapp that allows users to save links, take notes, and search, filter, and tag items.
+Sailbot Notes is a webapp that allows users to take notes, and search, filter, and tag them.
 
 I created this app becuase I was curious about a few new technologies. On the backend, I wanted to try out [Tom Christie](https://github.com/tomchristie)'s [Starlette](https://github.com/encode/starlette), which is awesome. On the frontend, I was curious about [Turbolinks](https://github.com/turbolinks/turbolinks) and [Stimulus](https://github.com/stimulusjs/stimulus). These libraries were used to build [Hey](https://hey.com)'s email app, which notably [doesn't use a client-rendered JavaScript framework](https://twitter.com/sstephenson/status/1272608117604397063) such as React. I have some observations about these technologies which I've told myself I'll write a blog post about someday. In the meantime, here's how to setup the project.
 
@@ -12,15 +12,9 @@ docker-compose up
 
 That's it. Go to a web browser and open `localhost:8000`.
 
-## Web extension
-
-1. Open your Chromium based browser and go to the extensions page. E.g., `brave://extensions`. You may have to enable developer mode if you haven't already.
-2. Click "Load unpacked" and choose the `webext` directory of this repository.
-3. Click the new link icon and enter your endpoint and login info. You can now start saving links. 🙂
-
 ## Deploy to Lightsail
 
-Linksaver has three components that need to be setup: a Mongo database, the application container, and web extension.
+Sailbot Notes has two components that need to be setup: a Mongo database and the application container.
 
 ### MongoDB
 

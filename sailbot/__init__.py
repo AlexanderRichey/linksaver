@@ -13,13 +13,9 @@ from .handlers import (
     session_form,
     create_session,
     delete_session,
-    links,
     notes,
-    oauth_form,
-    oauth,
     search,
     tags,
-    api_create_link,
 )
 from .auth import CookieAuthBackend
 from .db import client
@@ -35,16 +31,7 @@ app = Starlette(
         Route("/users", create_user, methods=["POST"]),
         Route("/sessions", session_form, methods=["GET"]),
         Route("/sessions", create_session, methods=["POST"]),
-        Route("/oauth", oauth_form, methods=["GET"]),
-        Route("/oauth", oauth, methods=["POST"]),
         Route("/logout", delete_session, methods=["GET"]),
-        Route("/links", links.render_form, methods=["GET"]),
-        Route("/links", links.create_resource, methods=["POST"]),
-        Route("/links/{id}", links.render_form, methods=["GET"]),
-        Route("/links/{id}/update", links.update_resource, methods=["POST"]),
-        Route("/links/{id}/pin", links.pin_resource, methods=["POST"]),
-        Route("/links/{id}/unpin", links.unpin_resource, methods=["POST"]),
-        Route("/links/{id}/delete", links.delete_resource, methods=["POST"]),
         Route("/notes", notes.render_form, methods=["GET"]),
         Route("/notes", notes.create_resource, methods=["POST"]),
         Route("/notes/{id}", notes.render_form, methods=["GET"]),
@@ -54,7 +41,6 @@ app = Starlette(
         Route("/notes/{id}/delete", notes.delete_resource, methods=["POST"]),
         Route("/tags/{tag}", tags, methods=["GET"]),
         Route("/search", search, methods=["GET"]),
-        Route("/api/links", api_create_link, methods=["POST", "OPTIONS"]),
         Mount("/", app=StaticFiles(directory="static")),
     ],
 )

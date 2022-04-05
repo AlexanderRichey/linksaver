@@ -1,0 +1,519 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" x="0px" y="0px" width="500px" height="626px" viewBox="0 0 500 626">
+<defs>
+<g id="ref_neck_copy_0_Layer0_0_FILL">
+<path fill="#FFFFFF" stroke="none" d="
+M 10.55 -12.8
+L -10.55 -12.8 -10.55 12.8 10.55 12.8 10.55 -12.8 Z"/>
+</g>
+
+<g id="res_shoulder_0_Layer0_0_FILL">
+<path fill="#FFFFFF" stroke="none" d="
+M -9 -11.8
+Q -11.65 -8.95 -11.65 -5.1
+L -11.65 5.1
+Q -11.65 8.95 -9 11.65 -8.65 11.95 -8.15 12.3 -5.7 14.45 -2.3 14.45
+L 2.3 14.45
+Q 5.65 14.45 8.15 12.3 8.6 11.95 8.95 11.65 11.65 8.95 11.65 5.1
+L 11.65 -5.1
+Q 11.65 -8.95 8.95 -11.8 7.95 -12.85 6.7 -13.4 4.75 -14.45 2.3 -14.45
+L -2.3 -14.45
+Q -4.8 -14.45 -6.7 -13.4 -7.95 -12.85 -9 -11.8 Z"/>
+</g>
+
+<g id="res_head_0_Layer0_0_FILL">
+<path fill="#FFFFFF" stroke="none" d="
+M 71.15 -84.4
+Q 67.4 -88.25 63.55 -91.2 53.8 -99.65 42.6 -104.85 23.05 -114.3 -0.1 -114.9 -41.7 -114.05 -71.9 -84.4 -83.65 -72.45 -90.9 -58.85 -93.4 -54.45 -95.3 -49.85 -102.65 -32.7 -103.2 -12.85 -103.5 -9.35 -103.5 -6.05 -103.75 -0.9 -102.4 87.8
+L -101.85 91.3
+Q -100.2 97.05 -95.3 101.65 -88.8 107.05 -76.75 110.4 -72.2 110.95 -67.3 111.75 -62.05 112.3 -56.95 112.85 -53.45 113.05 -49.6 113.3 -21.85 114.4 -18.55 114.95 -16.45 114.95 -14.5 114.95 -13.15 114.95 -12.05 114.95 -6.35 114.95 -0.1 114.95
+L 37.75 114.15 76.3 110.4
+Q 98.35 104.7 101.65 90.8 102.75 87.25 103.6 70.9
+L 103.05 -12.85
+Q 101.95 -37.9 90.7 -58.85 83.2 -72.45 71.15 -84.4 Z"/>
+</g>
+
+<g id="ref_foot1_0_Layer0_0_FILL">
+<path fill="#FFFFFF" stroke="none" d="
+M 19.95 -6.1
+Q 15.2 -14.4 5.95 -16.85 -3.25 -19.35 -11.5 -14.55 -19.75 -9.8 -22.3 -0.6 -23.45 3.85 -22.95 8 -18.85 16.7 -1.55 17.6 15.75 18.5 22.3 11.2 24.7 2.05 19.95 -6.1 Z"/>
+</g>
+
+<g id="res_body_0_Layer0_0_FILL">
+<path fill="#FFFFFF" stroke="none" d="
+M 39.65 -32.6
+Q 39.65 -44.2 25.55 -44.2
+L -25.55 -44.2
+Q -36.95 -44.2 -39.1 -36.65 -39.65 -34.85 -39.65 -32.6
+L -39.45 30.45 -39.45 34.65
+Q -39.45 35.7 -39.1 36.6 -36.95 44.2 -25.55 44.2
+L 25.55 44.2
+Q 37.7 44.2 39.45 35.7 39.65 34.5 39.65 33.1
+L 39.65 -32.6 Z"/>
+</g>
+
+<g id="res_skirt_0_Layer0_0_FILL">
+<path fill="#FFFFFF" stroke="none" d="
+M 40.45 -8.6
+Q 37.7 -10.95 33.8 -10.95
+L -33.8 -10.95
+Q -36.1 -10.95 -38.05 -10.05 -38.4 -9.9 -38.6 -9.7 -40.1 -9.15 -41.55 -7.75 -44.7 -4.55 -44.7 0 -44.7 4.55 -41.55 7.75 -38.4 10.95 -33.8 10.95
+L 33.8 10.95
+Q 38.4 10.95 41.55 7.75 44.7 4.55 44.7 0 44.7 -4.55 41.55 -7.75 41.35 -7.9 41.2 -8.1 40.8 -8.45 40.45 -8.6 Z"/>
+</g>
+
+<g id="res_hat_0_Layer0_0_FILL">
+<path fill="#FFFFFF" stroke="none" d="
+M 55.65 -27.6
+Q 43.4 -40.1 28.45 -46 47.35 -23.8 46.85 32.6
+L 78.8 32.6
+Q 78.8 31.1 78.8 29.55 78.8 29.25 78.8 28.95 78.8 24.8 78.45 20.8 75.75 -7.1 55.65 -27.6
+M -28.75 -46.25
+Q -44.05 -40.4 -56.55 -27.6 -76.7 -7.1 -79.4 20.8 -79.75 24.8 -79.75 28.95 -79.75 29.25 -79.75 29.55 -79.75 30.7 -79.75 31.85 -79.7 32.2 -79.7 32.6
+L 9.45 32.6
+Q 10.55 -37.75 -28.75 -46.25
+M -28.75 -54.3
+L -28.75 -46.25
+Q 10.55 -37.75 9.45 32.6
+L 17.05 32.6
+Q 18.15 -45.9 -28.75 -54.3
+M -0.5 -59.8
+Q -15.65 -59.8 -28.75 -54.3 18.15 -45.9 17.05 32.6
+L 46.85 32.6
+Q 47.35 -23.8 28.45 -46 20.15 -55.75 8.05 -59.35 3.9 -59.8 -0.5 -59.8 Z"/>
+</g>
+
+<g id="star_0_Layer0_0_FILL">
+<path fill="#FFFFFF" stroke="none" d="
+M -0.05 -30.95
+L -8.55 -8.15 -32.3 -8.6 -13.15 7.3 -20.45 30.15 -0.6 16.35 20.05 31 13.6 7.45 32.35 -7.5 8.5 -8.25 -0.05 -30.95 Z"/>
+</g>
+
+<g id="star_8_0_Layer0_0_FILL">
+<path fill="#FFFFFF" stroke="none" d="
+M -0.05 -25.8
+L -6.85 -7.55 -25.85 -7.9 -10.55 4.85 -16.4 23.15 -0.45 12.1 16.05 23.8 10.9 4.95 25.85 -7 6.8 -7.6 -0.05 -25.8 Z"/>
+</g>
+
+<g id="star_6_0_Layer0_0_FILL">
+<path fill="#FFFFFF" stroke="none" d="
+M -0.05 -18
+L -4.95 -4.75 -18.75 -5 -7.65 4.25 -11.9 17.5 -0.3 9.5 11.65 18 7.9 4.35 18.75 -4.35 4.9 -4.75 -0.05 -18 Z"/>
+</g>
+
+<g id="res_pencil_0_Layer0_0_FILL">
+<path fill="#FFFFFF" stroke="none" d="
+M -18 -8.8
+Q -23.35 0 -18 8.8
+L 16.1 8.8
+Q 10.1 0.7 16.1 -8.8
+L -18 -8.8
+M 16.1 8.8
+L 34.4 0 16.1 -8.8
+Q 10.1 0.7 16.1 8.8
+M -18 -8.8
+L -32 -8.8
+Q -36.75 0 -32 8.8
+L -18 8.8
+Q -23.35 0 -18 -8.8 Z"/>
+</g>
+
+<g id="res_forearm_foreshortened_0_Layer0_0_FILL">
+<path fill="#FFFFFF" stroke="none" d="
+M 17.6 -13.45
+Q 14.95 -21.95 2.4 -17.25 -10.9 -11.5 -15.95 -6.6 -21 -1.75 -21.05 1.8 -19.15 12.85 -19.1 13 -18.05 17.8 -13.4 18.75 2.75 20.05 16.05 13.75 17.15 13.2 18.3 12.6 21 10.7 21.1 7
+L 17.6 -13.45 Z"/>
+</g>
+
+<g id="blueprints1_0_Layer1_0_FILL">
+<path fill="#FFFFFF" stroke="none" d="
+M -82.95 -56.2
+Q -87.05 -55.7 -89.95 -52.15 -92.45 -49.2 -92.8 -45.55
+L -92.8 -43.6
+Q -92.65 -39.45 -89.9 -36.75 -87 -33.9 -83.1 -33
+L -74 -31.1 -73.4 -53.2
+Q -76.4 -56.15 -82.95 -56.2
+M 59.7 -61.05
+Q 59.55 -56.9 56.8 -53.5 53.9 -50 51.6 -48.25 47.6 -44.75 42.05 -42.6 1.2 -19.75 -74 -31.1
+L -83.1 -33
+Q -87 -33.9 -89.9 -36.75 -92.65 -39.45 -92.8 -43.6
+L -92.75 43.65
+Q -92.8 44.35 -92.8 45.1 -92.8 49.6 -89.9 52.45 -87 55.3 -75.15 57.75 4.25 71 48.35 42.6 53.9 39.2 56.8 35.7 59.7 32.15 59.7 27.65 59.7 26.9 59.65 26.2
+L 59.7 -61.05
+M 56.8 -53.5
+Q 59.55 -56.9 59.7 -61.05
+L 59.7 -63
+Q 59.35 -66.55 56.85 -68.95 53.95 -71.8 49.85 -71.35 45 -70.75 41.15 -68
+L 42.05 -42.6
+Q 47.6 -44.75 51.6 -48.25 53.9 -50 56.8 -53.5 Z"/>
+</g>
+
+<path id="res_arm2_0_Layer0_0_1_STROKES" stroke="#E17107" stroke-width="6.5" stroke-linejoin="round" stroke-linecap="round" fill="none" d="
+M -33.95 -3.55
+Q 1.53671875 20.69921875 30.4 -12.45"/>
+
+<path id="ref_neck_copy_0_Layer0_0_1_STROKES" stroke="#E17107" stroke-width="6.5" stroke-linejoin="round" stroke-linecap="round" fill="none" d="
+M 10.55 -12.8
+L 10.55 12.8
+M -10.55 12.8
+L -10.55 -12.8"/>
+
+<path id="res_shoulder_0_Layer0_0_1_STROKES" stroke="#E17107" stroke-width="6.5" stroke-linejoin="round" stroke-linecap="round" fill="none" d="
+M -2.3 14.45
+L 2.3 14.45
+Q 5.65 14.45 8.15 12.3 8.6 11.95 8.95 11.65 11.65 8.95 11.65 5.1
+L 11.65 -5.1
+Q 11.65 -8.95 8.95 -11.8 7.95 -12.85 6.7 -13.4 4.75 -14.45 2.3 -14.45
+L -2.3 -14.45
+Q -4.8 -14.45 -6.7 -13.4 -7.95 -12.85 -9 -11.8 -11.65 -8.95 -11.65 -5.1
+L -11.65 5.1
+Q -11.65 8.95 -9 11.65 -8.65 11.95 -8.15 12.3 -5.7 14.45 -2.3 14.45 Z"/>
+
+<path id="res_head_0_Layer0_0_1_STROKES" stroke="#E17107" stroke-width="10" stroke-linejoin="round" stroke-linecap="round" fill="none" d="
+M 103.6 70.9
+L 103.05 -12.85
+Q 101.95 -37.9 90.7 -58.85 83.2 -72.45 71.15 -84.4 67.4 -88.25 63.55 -91.2 53.8 -99.65 42.6 -104.85 23.05 -114.3 -0.1 -114.9 -41.7 -114.05 -71.9 -84.4 -83.65 -72.45 -90.9 -58.85 -93.4 -54.45 -95.3 -49.85 -102.65 -32.7 -103.2 -12.85 -103.5 -9.35 -103.5 -6.05 -103.75 -0.9 -102.4 87.8
+L -101.85 91.3
+Q -100.2 97.05 -95.3 101.65 -88.8 107.05 -76.75 110.4 -72.2 110.95 -67.3 111.75 -62.05 112.3 -56.95 112.85 -53.45 113.05 -49.6 113.3 -21.85 114.4 -18.55 114.95 -16.45 114.95 -14.5 114.95 -13.15 114.95 -12.05 114.95 -6.35 114.95 -0.1 114.95
+L 37.75 114.15 76.3 110.4
+Q 98.35 104.7 101.65 90.8 102.75 87.25 103.6 70.9 Z"/>
+
+<path id="ref_foot1_0_Layer0_0_1_STROKES" stroke="#E17107" stroke-width="6.5" stroke-linejoin="round" stroke-linecap="round" fill="none" d="
+M 19.95 -6.1
+Q 24.7 2.05 22.3 11.2 15.75 18.5 -1.55 17.6 -18.85 16.7 -22.95 8 -23.45 3.85 -22.3 -0.6 -19.75 -9.8 -11.5 -14.55 -3.25 -19.35 5.95 -16.85 15.2 -14.4 19.95 -6.1 Z"/>
+
+<path id="ref_leg2_0_Layer0_0_1_STROKES" stroke="#E17107" stroke-width="6.5" stroke-linejoin="round" stroke-linecap="round" fill="none" d="
+M 0.15 -27.05
+Q 8.05 5.55 -1.2 27.65"/>
+
+<path id="res_body_0_Layer0_0_1_STROKES" stroke="#E17107" stroke-width="6.5" stroke-linejoin="round" stroke-linecap="round" fill="none" d="
+M -39.45 30.45
+L -39.65 -32.6
+Q -39.65 -34.85 -39.1 -36.65 -36.95 -44.2 -25.55 -44.2
+L 25.55 -44.2
+Q 39.65 -44.2 39.65 -32.6
+L 39.65 33.1
+Q 39.65 34.5 39.45 35.7 37.7 44.2 25.55 44.2
+L -25.55 44.2
+Q -36.95 44.2 -39.1 36.6 -39.45 35.7 -39.45 34.65 -39.65 33.6 -39.65 32.55
+L -39.45 30.45 -39.45 34.65"/>
+
+<path id="ref_leg1_0_Layer0_0_1_STROKES" stroke="#E17107" stroke-width="6.5" stroke-linejoin="round" stroke-linecap="round" fill="none" d="
+M 7.75 -28.85
+Q 15.05 2.2 -4.9 22.9"/>
+
+<path id="res_skirt_0_Layer0_0_1_STROKES" stroke="#E17107" stroke-width="6.5" stroke-linejoin="round" stroke-linecap="round" fill="none" d="
+M 40.45 -8.6
+Q 40.8 -8.45 41.2 -8.1 41.35 -7.9 41.55 -7.75 44.7 -4.55 44.7 0 44.7 4.55 41.55 7.75 38.4 10.95 33.8 10.95
+L -33.8 10.95
+Q -38.4 10.95 -41.55 7.75 -44.7 4.55 -44.7 0 -44.7 -4.55 -41.55 -7.75 -40.1 -9.15 -38.6 -9.7 -38.4 -9.9 -38.05 -10.05 -36.1 -10.95 -33.8 -10.95
+L 33.8 -10.95
+Q 37.7 -10.95 40.45 -8.6 Z"/>
+
+<path id="res_icon_0_Layer0_0_1_STROKES" stroke="#E17107" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" fill="none" d="
+M -15.3 15.45
+Q -8.95 22.05 0.05 21.65 9 21.65 15.4 15.25 21.6 8.95 21.65 -0.1 21.6 -8.8 15.3 -15.3 9.05 -21.5 0.15 -21.65 -8.95 -21.85 -15.2 -15.5 -21.65 -9 -21.6 -0.05 -21.6 9.2 -15.3 15.45 Z
+M -6.65 6.75
+Q -3.8 9.75 0.05 9.5 3.9 9.65 6.7 6.6 9.4 3.95 9.35 -0.05 9.45 -3.8 6.65 -6.6 3.75 -9.35 -0.05 -9.4 -4 -9.35 -6.65 -6.75 -9.5 -3.75 -9.45 -0.05 -9.6 4.1 -6.65 6.75 Z"/>
+
+<path id="res_eye3_0_Layer0_0_1_STROKES" stroke="#E17107" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" fill="none" d="
+M -13.65 7.45
+L -13.15 7.4"/>
+
+<path id="res_eye3_0_Layer0_0_2_STROKES" stroke="#E17107" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="none" d="
+M -13.15 7.4
+Q -15.05 4.15 -15.05 -0.1 -15.05 -6.2 -10.75 -10.7 -6.3 -14.95 -0.15 -14.95 6.2 -14.95 10.6 -10.7 15.1 -6.2 15.1 -0.1 15.1 6.3 10.6 10.55 6.2 14.95 -0.15 14.95 -6.3 14.95 -10.75 10.55 -12.2 9.1 -13.15 7.4 Z"/>
+
+<path id="res_hat_0_Layer0_0_1_STROKES" stroke="#E17107" stroke-width="6.5" stroke-linejoin="round" stroke-linecap="round" fill="none" d="
+M -79.75 31.85
+Q -79.75 30.7 -79.75 29.55 -79.75 29.25 -79.75 28.95 -79.75 24.8 -79.4 20.8 -76.7 -7.1 -56.55 -27.6 -44.05 -40.4 -28.75 -46.25
+L -28.75 -54.3
+Q -15.65 -59.8 -0.5 -59.8 3.9 -59.8 8.05 -59.35 20.15 -55.75 28.45 -46 43.4 -40.1 55.65 -27.6 75.75 -7.1 78.45 20.8 78.8 24.8 78.8 28.95 78.8 29.25 78.8 29.55 78.8 31.1 78.8 32.6
+L 109.6 32.6
+M 78.8 32.6
+L 46.85 32.6 17.05 32.6 9.45 32.6 -79.7 32.6
+M -79.7 32.9
+Q -79.75 32.4 -79.75 31.85
+M 46.85 32.6
+Q 47.35 -23.8 28.45 -46"/>
+
+<path id="res_hat_0_Layer0_0_2_STROKES" stroke="#E17107" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="none" d="
+M 17.05 32.6
+Q 18.15 -45.9 -28.75 -54.3
+M 9.45 32.6
+Q 10.55 -37.75 -28.75 -46.25"/>
+
+<path id="res_mouth_0_Layer0_0_1_STROKES" stroke="#E17107" stroke-width="6.5" stroke-linejoin="round" stroke-linecap="round" fill="none" d="
+M -88.5 -12.65
+Q -19 23.5 17.65 13.6"/>
+
+<path id="star_0_Layer0_0_1_STROKES" stroke="#E17107" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" fill="none" d="
+M 20.05 31
+L -0.6 16.35 -20.45 30.15 -13.15 7.3 -32.3 -8.6 -8.55 -8.15 -0.05 -30.95 8.5 -8.25 32.35 -7.5 13.6 7.45 20.05 31 Z"/>
+
+<path id="star_8_0_Layer0_0_1_STROKES" stroke="#E17107" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" fill="none" d="
+M 16.05 23.8
+L -0.45 12.1 -16.4 23.15 -10.55 4.85 -25.85 -7.9 -6.85 -7.55 -0.05 -25.8 6.8 -7.6 25.85 -7 10.9 4.95 16.05 23.8 Z"/>
+
+<path id="star_6_0_Layer0_0_1_STROKES" stroke="#E17107" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" fill="none" d="
+M 11.65 18
+L -0.3 9.5 -11.9 17.5 -7.65 4.25 -18.75 -5 -4.95 -4.75 -0.05 -18 4.9 -4.75 18.75 -4.35 7.9 4.35 11.65 18 Z"/>
+
+<path id="res_pencil_0_Layer0_0_1_STROKES" stroke="#E17107" stroke-width="6.5" stroke-linejoin="round" stroke-linecap="round" fill="none" d="
+M -18 -8.8
+L -32 -8.8
+Q -36.75 0 -32 8.8
+L -18 8.8
+Q -23.35 0 -18 -8.8
+L 16.1 -8.8 34.4 0 16.1 8.8 -18 8.8
+M 16.1 8.8
+Q 10.1 0.7 16.1 -8.8"/>
+
+<path id="res_arm1_0_Layer0_0_1_STROKES" stroke="#E17107" stroke-width="6.5" stroke-linejoin="round" stroke-linecap="round" fill="none" d="
+M -8.5 -33.85
+Q -7.3845703125 18.9673828125 13.75 33.1"/>
+
+<path id="res_forearm_foreshortened_0_Layer0_0_1_STROKES" stroke="#E17107" stroke-width="6.5" stroke-linejoin="round" stroke-linecap="round" fill="none" d="
+M 18.3 12.6
+Q 17.15 13.2 16.05 13.75 2.75 20.05 -13.4 18.75 -18.05 17.8 -19.1 13 -19.15 12.85 -21.05 1.8 -21 -1.75 -15.95 -6.6 -10.9 -11.5 2.4 -17.25 14.95 -21.95 17.6 -13.45
+L 21.1 7
+Q 21 10.7 18.3 12.6 Z"/>
+
+<path id="blueprints1_0_Layer1_0_1_STROKES" stroke="#E17107" stroke-width="6.5" stroke-linejoin="round" stroke-linecap="round" fill="none" d="
+M 42.05 -42.6
+Q 47.6 -44.75 51.6 -48.25 53.9 -50 56.8 -53.5 59.55 -56.9 59.7 -61.05
+L 59.7 -63
+Q 59.35 -66.55 56.85 -68.95 53.95 -71.8 49.85 -71.35 45 -70.75 41.15 -68
+L 42.05 -42.6
+Q 1.2 -19.75 -74 -31.1
+L -83.1 -33
+Q -87 -33.9 -89.9 -36.75 -92.65 -39.45 -92.8 -43.6
+L -92.75 43.65
+Q -92.8 44.35 -92.8 45.1 -92.8 49.6 -89.9 52.45 -87 55.3 -75.15 57.75 4.25 71 48.35 42.6 53.9 39.2 56.8 35.7 59.7 32.15 59.7 27.65 59.7 26.9 59.65 26.2
+L 59.7 -61.05
+M -92.8 -43.6
+L -92.8 -45.55
+Q -92.45 -49.2 -89.95 -52.15 -87.05 -55.7 -82.95 -56.2 -76.4 -56.15 -73.4 -53.2
+L -74 -31.1"/>
+
+<path id="res_fingers_0_Layer0_0_1_STROKES" stroke="#E17107" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" fill="none" d="
+M 9.15 -2.7
+L 5.125 5.775
+M -4.35 -9.8
+L -8.95 -0.05
+M 2.6 -6.75
+L -1.975 2.9"/>
+</defs>
+
+<g transform="matrix( 1, 0, 0, 1, 342.75,227.5) ">
+<g transform="matrix( 0.9998321533203125, -0.0175933837890625, 0.0175933837890625, 0.9998321533203125, 72.75,89.3) ">
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#res_arm2_0_Layer0_0_1_STROKES"/>
+</g>
+</g>
+
+<g transform="matrix( 0.87457275390625, -0.482025146484375, 0.482025146484375, 0.87457275390625, -13,84.6) ">
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#ref_neck_copy_0_Layer0_0_FILL"/>
+
+<use xlink:href="#ref_neck_copy_0_Layer0_0_1_STROKES"/>
+</g>
+</g>
+
+<g transform="matrix( 0.7507781982421875, -0.3513946533203125, 0.3513946533203125, 0.7507781982421875, 32.1,88.2) ">
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#res_shoulder_0_Layer0_0_FILL"/>
+
+<use xlink:href="#res_shoulder_0_Layer0_0_1_STROKES"/>
+</g>
+</g>
+
+<g transform="matrix( 0.5452880859375, -0.3499298095703125, 0.3499298095703125, 0.5452880859375, -58.85,19.1) ">
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#res_head_0_Layer0_0_FILL"/>
+
+<use xlink:href="#res_head_0_Layer0_0_1_STROKES"/>
+</g>
+</g>
+
+<g transform="matrix( 0.9661407470703125, 0.2545166015625, -0.2545166015625, 0.9661407470703125, 69.7,234.75) ">
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#ref_foot1_0_Layer0_0_FILL"/>
+
+<use xlink:href="#ref_foot1_0_Layer0_0_1_STROKES"/>
+</g>
+</g>
+
+<g transform="matrix( 0.96478271484375, -0.259918212890625, 0.259918212890625, 0.96478271484375, 62.2,196.55) ">
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#ref_leg2_0_Layer0_0_1_STROKES"/>
+</g>
+</g>
+
+<g transform="matrix( 0.9134979248046875, -0.403778076171875, 0.403778076171875, 0.9134979248046875, 10.5,131.4) ">
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#res_body_0_Layer0_0_FILL"/>
+
+<use xlink:href="#res_body_0_Layer0_0_1_STROKES"/>
+</g>
+</g>
+
+<g transform="matrix( 0.9661407470703125, 0.254486083984375, -0.254486083984375, 0.9661407470703125, 15.1,254.25) ">
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#ref_foot1_0_Layer0_0_FILL"/>
+
+<use xlink:href="#ref_foot1_0_Layer0_0_1_STROKES"/>
+</g>
+</g>
+
+<g transform="matrix( 0.96478271484375, -0.259918212890625, 0.259918212890625, 0.96478271484375, 16.75,219.45) ">
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#ref_leg1_0_Layer0_0_1_STROKES"/>
+</g>
+</g>
+
+<g transform="matrix( 0.9100189208984375, -0.4115142822265625, 0.4115142822265625, 0.9100189208984375, 29.1,172.6) ">
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#res_skirt_0_Layer0_0_FILL"/>
+
+<use xlink:href="#res_skirt_0_Layer0_0_1_STROKES"/>
+</g>
+</g>
+
+<g transform="matrix( 0.9188232421875, -0.3916015625, 0.3916015625, 0.9188232421875, 18.1,124.5) ">
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#res_icon_0_Layer0_0_1_STROKES"/>
+</g>
+</g>
+
+<g transform="matrix( 0.9045562744140625, -0.4233551025390625, 0.4233551025390625, 0.9045562744140625, -33.6,122.45) ">
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#res_shoulder_0_Layer0_0_FILL"/>
+
+<use xlink:href="#res_shoulder_0_Layer0_0_1_STROKES"/>
+</g>
+</g>
+
+<g transform="matrix( 0.949005126953125, -0.3104095458984375, 0.3104095458984375, 0.949005126953125, -59.6,18.85) ">
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#res_eye3_0_Layer0_0_1_STROKES"/>
+
+<use xlink:href="#res_eye3_0_Layer0_0_2_STROKES"/>
+</g>
+</g>
+
+<g transform="matrix( 0.8116607666015625, -0.58135986328125, 0.58135986328125, 0.8116607666015625, -91.7,-27.55) ">
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#res_hat_0_Layer0_0_FILL"/>
+
+<use xlink:href="#res_hat_0_Layer0_0_1_STROKES"/>
+
+<use xlink:href="#res_hat_0_Layer0_0_2_STROKES"/>
+</g>
+</g>
+
+<g transform="matrix( 0.685516357421875, -0.725738525390625, 0.725738525390625, 0.685516357421875, -14.2,7.45) ">
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#res_mouth_0_Layer0_0_1_STROKES"/>
+</g>
+</g>
+
+<g transform="matrix( -0.9999847412109375, 0, 0, 0.9999847412109375, -267.1,-142.4) ">
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#star_0_Layer0_0_FILL"/>
+
+<use xlink:href="#star_0_Layer0_0_1_STROKES"/>
+</g>
+</g>
+
+<g transform="matrix( -0.9999847412109375, 0, 0, 0.9999847412109375, -197.05,-197.15) ">
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#star_8_0_Layer0_0_FILL"/>
+
+<use xlink:href="#star_8_0_Layer0_0_1_STROKES"/>
+</g>
+</g>
+
+<g transform="matrix( 0.9999847412109375, 0, 0, 0.9999847412109375, -138.9,362.95) ">
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#star_0_Layer0_0_FILL"/>
+
+<use xlink:href="#star_0_Layer0_0_1_STROKES"/>
+</g>
+</g>
+
+<g transform="matrix( 1, 0, 0, 1, -199.15,314) ">
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#star_6_0_Layer0_0_FILL"/>
+
+<use xlink:href="#star_6_0_Layer0_0_1_STROKES"/>
+</g>
+</g>
+
+<g transform="matrix( 0.8614501953125, -0.50482177734375, 0.50482177734375, 0.8614501953125, -16.35,-7.3) ">
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#res_eye3_0_Layer0_0_1_STROKES"/>
+
+<use xlink:href="#res_eye3_0_Layer0_0_2_STROKES"/>
+</g>
+</g>
+
+<g transform="matrix( 0.4506072998046875, -0.8926544189453125, 0.8926544189453125, 0.4506072998046875, -113.95,39.3) ">
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#res_pencil_0_Layer0_0_FILL"/>
+
+<use xlink:href="#res_pencil_0_Layer0_0_1_STROKES"/>
+</g>
+</g>
+
+<g transform="matrix( 0.9998321533203125, -0.0175933837890625, 0.0175933837890625, 0.9998321533203125, -28.35,157.95) ">
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#res_arm1_0_Layer0_0_1_STROKES"/>
+</g>
+</g>
+
+<g transform="matrix( 0.764495849609375, -0.64459228515625, 0.64459228515625, 0.764495849609375, -11.25,176.6) ">
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#res_forearm_foreshortened_0_Layer0_0_FILL"/>
+
+<use xlink:href="#res_forearm_foreshortened_0_Layer0_0_1_STROKES"/>
+</g>
+</g>
+
+<g transform="matrix( 0.7717437744140625, -0.6333465576171875, 0.58770751953125, 0.805206298828125, 72.05,107.85) ">
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#blueprints1_0_Layer1_0_FILL"/>
+
+<use xlink:href="#blueprints1_0_Layer1_0_1_STROKES"/>
+</g>
+</g>
+
+<g transform="matrix( 0.949371337890625, 0.313873291015625, -0.313873291015625, 0.949371337890625, -1,166.1) ">
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#res_fingers_0_Layer0_0_1_STROKES"/>
+</g>
+</g>
+
+<g transform="matrix( 0.3621368408203125, 0.9320068359375, 0.9320068359375, -0.3621368408203125, 106.3,49.7) ">
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#res_fingers_0_Layer0_0_1_STROKES"/>
+</g>
+</g>
+
+<g transform="matrix( 1, 0, 0, 1, -318.2,-191.35) ">
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#star_6_0_Layer0_0_FILL"/>
+
+<use xlink:href="#star_6_0_Layer0_0_1_STROKES"/>
+</g>
+</g>
+
+<g transform="matrix( 1, 0, 0, 1, 133.75,-129.4) ">
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#star_6_0_Layer0_0_FILL"/>
+
+<use xlink:href="#star_6_0_Layer0_0_1_STROKES"/>
+</g>
+</g>
+</g>
+</svg>
